@@ -1,0 +1,37 @@
+//
+   Created by kishore.relangi on 3/22/14.
+
+//
+   Created by kishore.relangi on 3/21/14.
+extends layout
+block content
+    div.container-fluid(style="margin:100px;")
+        .row.col-lg-push-2.col-lg-10
+            form.form-horizontal(role="form", method="post", action="/signup")
+                legend New User Signup Form
+                div.form-group
+                    label.col-lg-7.text-danger #{error_message || ''}
+                div.form-group
+                    label.col-lg-7.text-danger {{error}}
+                div.form-group
+                    label.col-lg-7.text-success #{message || ''}
+                div.form-group(ng-class="{'has-success': email != undefined}")
+                    label.col-lg-2.control-label(for="email") Email
+                    div.col-lg-5
+                        input.form-control(ng-model="email", name="email", placeholder="Email", type="email", required)
+                div.form-group(ng-class="{'has-success': username != undefined}")
+                    label.col-lg-2.control-label(for="username") User Name
+                    div.col-lg-5
+                        input.form-control(ng-model="username", name="username", placeholder="User Name", type="text", required)
+                div.form-group(ng-class="{'has-success': password != undefined}")
+                    label.col-lg-2.control-label(for="password") Password
+                    div.col-lg-5
+                        input.form-control(ng-model="password", name="password", placeholder="password", type="password", required)
+                div.form-group(ng-class="{'has-error': retype_password != password, 'has-success': retype_password == password}")
+                    label.col-lg-2.control-label(for="password") Re-type Password
+                    div.col-lg-5
+                        input.form-control(ng-model="retype_password", name="retype_password", placeholder="Retype password", type="password", required)
+                div.form-group
+                    div.col-lg-offset-2.col-lg-5
+                        button.btn.btn-default(type="submit", ng-disabled="password != retype_password") Sign Up&nbsp;
+                            span.fa.fa-user

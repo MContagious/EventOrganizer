@@ -1,0 +1,15 @@
+doctype html
+html(ng-app="EventOrganizer")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/css/font-awesome-4.0.3/css/font-awesome.css')
+        script(src='/javascripts/jquery-1.11.0/jquery-1.11.0.min.js')
+        script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+        script(type="text/javascript", src="/javascripts/angular-1.2.14/angular.min.js")
+        script(type="text/javascript", src="/javascripts/angular-1.2.14/angular-route.min.js")
+        script(type="text/javascript", src="/javascripts/event_organizer.js")
+        script(type="text/javascript", src="/javascripts/controllers.js")
+
+    body
+        block content
