@@ -15,7 +15,7 @@ exports.restrict = function (req, res, next) {
     if (req.session.user == undefined) {
         req.session.requested_url = req.url;
         console.log(req.url + ' requested a restricted url');
-        res.render('login', {error_message: 'Session was expired. Please sign in..'});
+        res.redirect('/login');
     }
     else {
         next();
