@@ -12,7 +12,7 @@
      * @name angular.mock
      * @description
      *
-     * Namespace from 'angular-mocks.js' which contains testing related code.
+     * Namespace from 'angular-mocks.ui' which contains testing related code.
      */
     angular.mock = {};
 
@@ -204,7 +204,7 @@
      * information.
      *
      *
-     * ```js
+     * ```ui
      *   describe('$exceptionHandlerProvider', function() {
  *
  *     it('should capture log messages and exceptions', function() {
@@ -344,7 +344,7 @@
                  * Array of messages logged using {@link ngMock.$log#log}.
                  *
                  * @example
-                 * ```js
+                 * ```ui
                  * $log.log('Some Log');
                  * var first = $log.log.logs.unshift();
                  * ```
@@ -358,7 +358,7 @@
                  * Array of messages logged using {@link ngMock.$log#info}.
                  *
                  * @example
-                 * ```js
+                 * ```ui
                  * $log.info('Some Info');
                  * var first = $log.info.logs.unshift();
                  * ```
@@ -372,7 +372,7 @@
                  * Array of messages logged using {@link ngMock.$log#warn}.
                  *
                  * @example
-                 * ```js
+                 * ```ui
                  * $log.warn('Some Warning');
                  * var first = $log.warn.logs.unshift();
                  * ```
@@ -386,7 +386,7 @@
                  * Array of messages logged using {@link ngMock.$log#error}.
                  *
                  * @example
-                 * ```js
+                 * ```ui
                  * $log.error('Some Error');
                  * var first = $log.error.logs.unshift();
                  * ```
@@ -400,7 +400,7 @@
                  * Array of messages logged using {@link ngMock.$log#debug}.
                  *
                  * @example
-                 * ```js
+                 * ```ui
                  * $log.debug('Some Error');
                  * var first = $log.debug.logs.unshift();
                  * ```
@@ -585,7 +585,7 @@
             }
             date.setUTCFullYear(int(match[1]), int(match[2]) - 1, int(match[3]));
             date.setUTCHours(int(match[4] || 0) - tzHour,
-                int(match[5] || 0) - tzMin,
+                    int(match[5] || 0) - tzMin,
                 int(match[6] || 0),
                 int(match[7] || 0));
             return date;
@@ -636,7 +636,7 @@
      * incomplete we might be missing some non-standard methods. This can result in errors like:
      * "Date.prototype.foo called on incompatible Object".
      *
-     * ```js
+     * ```ui
      * var newYearInBratislava = new TzDate(-1, '2009-12-31T23:00:00Z');
      * newYearInBratislava.getTimezoneOffset() => -60;
      * newYearInBratislava.getFullYear() => 2010;
@@ -994,7 +994,7 @@
      * The following code shows how to setup and use the mock backend when unit testing a controller.
      * First we create the controller under test:
      *
-     ```js
+     ```ui
      // The controller code
      function MyController($scope, $http) {
     var authToken;
@@ -1019,7 +1019,7 @@
      *
      * Now we setup the mock backend and create the test specs:
      *
-     ```js
+     ```ui
      // testing controller
      describe('MyController', function() {
        var $httpBackend, $rootScope, createController;
@@ -1474,7 +1474,7 @@
          * Typically, you would call this method following each test case that asserts requests using an
          * "afterEach" clause.
          *
-         * ```js
+         * ```ui
          *   afterEach($httpBackend.verifyNoOutstandingExpectation);
          * ```
          */
@@ -1495,7 +1495,7 @@
          * Typically, you would call this method following each test case that asserts requests using an
          * "afterEach" clause.
          *
-         * ```js
+         * ```ui
          *   afterEach($httpBackend.verifyNoOutstandingRequest);
          * ```
          */
@@ -1754,10 +1754,10 @@
         $httpBackend: angular.mock.$HttpBackendProvider,
         $rootElement: angular.mock.$RootElementProvider
     }).config(['$provide', function ($provide) {
-            $provide.decorator('$timeout', angular.mock.$TimeoutDecorator);
-            $provide.decorator('$$rAF', angular.mock.$RAFDecorator);
-            $provide.decorator('$$asyncCallback', angular.mock.$AsyncCallbackDecorator);
-        }]);
+        $provide.decorator('$timeout', angular.mock.$TimeoutDecorator);
+        $provide.decorator('$$rAF', angular.mock.$RAFDecorator);
+        $provide.decorator('$$asyncCallback', angular.mock.$AsyncCallbackDecorator);
+    }]);
 
     /**
      * @ngdoc module
@@ -1802,7 +1802,7 @@
      * To setup the application to run with this http backend, you have to create a module that depends
      * on the `ngMockE2E` and your application modules and defines the fake backend:
      *
-     * ```js
+     * ```ui
      *   myAppDev = angular.module('myAppDev', ['myApp', 'ngMockE2E']);
      *   myAppDev.run(function($httpBackend) {
  *     phones = [{name: 'phone1'}, {name: 'phone2'}];
@@ -2086,7 +2086,7 @@
          *
          * ## Example
          * Example of what a typical jasmine tests looks like with the inject method.
-         * ```js
+         * ```ui
          *
          *   angular.module('myApplicationModule', [])
          *       .value('mode', 'app')

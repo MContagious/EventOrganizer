@@ -1,0 +1,38 @@
+//
+   Created by kishore.relangi on 3/23/14.
+
+div(ng-include="'/partials/menu'")
+div.container
+    div.container-fluid
+        div.row
+            h3  {{main_event_name}}
+        div.row
+            div.col-md-3
+                div.row
+                    div.btn-group-vertical.btn-block
+                        button.btn.btn-block.btn-info(ng-click="create_sub_event=1;", ng-class="{'active' : create_sub_event == 1}")
+                            span.fa.fa-tasks
+                            | &nbsp;Create A New Task
+                        button.btn.btn-block.btn-warning(ng-click="create_form_elements=1", ng-class="{'active' : create_form_elements == 1}")
+                            span.fa.fa-check-square-o
+                            | &nbsp;Create Form Elements
+                        button.btn.btn-block.btn-primary(ng-click="create_form=1", ng-class="{'active' : create_form == 1}")
+                            span.fa.fa-list-alt
+                            | &nbsp;Create A New Form
+            div.col-md-9
+                div.container-fluid.container-border-left
+                    div.row
+                        div(ng-show="waiting == 1")
+                            h1.text-center
+                                b.fa.fa-spinner.fa-spin
+                        div.alert.alert-warning.alert-dismissable(ng-show="sub_events.length==0 && create_sub_event != 1 && waiting != 1")
+                            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+                            strong Warning&nbsp;
+                            | No subevents found. Please create
+                        div(ng-include="'/partials/create_task'")
+                        div(ng-include="'/partials/create_form_element'")
+                        div(ng-include="'/partials/create_form'")
+        div.row
+            pre {{nf.form_elements | json}}
+            pre {{form_elements | json}}
+            pre {{form_element_names_list | json}}

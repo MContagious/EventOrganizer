@@ -151,7 +151,7 @@
             routes[path] = angular.extend(
                 {reloadOnSearch: true},
                 route,
-                path && pathRegExp(path, route)
+                    path && pathRegExp(path, route)
             );
 
             // create redirection for trailing slashes
@@ -178,7 +178,7 @@
          * Normalizes the given path, returning a regular expression
          * and the original path.
          *
-         * Inspired by pathRexp in visionmedia/express/lib/utils.js.
+         * Inspired by pathRexp in visionmedia/express/lib/utils.ui.
          */
         function pathRegExp(path, opts) {
             var insensitive = opts.caseInsensitiveMatch,
@@ -275,7 +275,7 @@
                  Note that this example is using {@link ng.directive:script inlined templates}
                  to get it working on jsfiddle as well.
 
-                 <example name="$route-service" module="ngRouteExample" deps="angular-route.js" fixBase="true">
+                 <example name="$route-service" module="ngRouteExample" deps="angular-route.ui" fixBase="true">
                  <file name="index.html">
                  <div ng-controller="MainCntl">
                  Choose:
@@ -307,7 +307,7 @@
                  Chapter Id: {{params.chapterId}}
                  </file>
 
-                 <file name="script.js">
+                 <file name="script.ui">
                  angular.module('ngRouteExample', ['ngRoute'])
 
                  .config(function($routeProvider, $locationProvider) {
@@ -349,7 +349,7 @@
          }
                  </file>
 
-                 <file name="protractor.js" type="protractor">
+                 <file name="protractor.ui" type="protractor">
                  it('should load and compile correct template', function() {
            element(by.linkText('Moby: Ch1')).click();
            var content = element(by.css('[ng-view]')).getText();
@@ -457,7 +457,7 @@
                  * Check if the route matches the current url.
                  *
                  * Inspired by match in
-                 * visionmedia/express/lib/router/router.js.
+                 * visionmedia/express/lib/router/router.ui.
                  */
                 function switchRouteMatcher(on, route) {
                     var keys = route.keys,
@@ -626,7 +626,7 @@
      * Instead you can use `$route.current.params` to access the new route's parameters.
      *
      * @example
-     * ```js
+     * ```ui
      *  // Given:
      *  // URL: http://server.com/index.html#/Chapter/1/Section/2?search=moby
      *  // Route: /Chapter/:chapterId/Section/:sectionId
@@ -678,7 +678,7 @@
      *                    as an expression yields a truthy value.
      * @example
      <example name="ngView-directive" module="ngViewExample"
-     deps="angular-route.js;angular-animate.js"
+     deps="angular-route.ui;angular-animate.ui"
      animations="true" fixBase="true">
      <file name="index.html">
      <div ng-controller="MainCntl as main">
@@ -759,7 +759,7 @@
         }
      </file>
 
-     <file name="script.js">
+     <file name="script.ui">
      angular.module('ngViewExample', ['ngRoute', 'ngAnimate'],
      function($routeProvider, $locationProvider) {
             $routeProvider.when('/Book/:bookId', {
@@ -794,7 +794,7 @@
         }
      </file>
 
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should load and compile correct template', function() {
           element(by.linkText('Moby: Ch1')).click();
           var content = element(by.css('[ng-view]')).getText();

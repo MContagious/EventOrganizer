@@ -1,0 +1,28 @@
+//
+   Created by kishore.relangi on 3/23/14.
+
+div.row
+    div.col-sm-6.col-md-4
+        div.thumbnail
+            pre
+                h4.text-center {{main_event.name}}
+            img(data-src="holder.js/300x200/text:Default%20Event%20Image")
+            b.text-left Celebration Date : {{main_event.date}}
+            p
+            p  {{main_event.desc}}
+            p
+            p
+                a.btn.btn-default.btn-block(href="#/main_event/manage/{{main_event._id}}")
+                    b.fa.fa-cogs
+                    | &nbsp;Manage
+                a.btn.btn-default.btn-block(href="#/main_event/edit/{{main_event._id}}")
+                    b.fa.fa-edit
+                    | &nbsp;Edit
+                a.btn.btn-default.btn-block(href="#/main_event/delete/{{main_event._id}}")
+                    b.fa.fa-trash-o
+                    | &nbsp;Delete
+
+script(type='text/javascript').
+    $(function(){
+       Holder.run();
+    });

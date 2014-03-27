@@ -27,7 +27,7 @@
      * HTML Parser By Misko Hevery (misko@hevery.com)
      * based on:  HTML Parser By John Resig (ejohn.org)
      * Original code by Erik Arvidsson, Mozilla Public License
-     * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+     * http://erik.eae.net/simplehtmlparser/simplehtmlparser.ui
      *
      * // Use like so:
      * htmlParser(htmlString, {
@@ -58,7 +58,7 @@
      * @returns {string} Sanitized html.
      *
      * @example
-     <example module="ngSanitize" deps="angular-sanitize.js">
+     <example module="ngSanitize" deps="angular-sanitize.ui">
      <file name="index.html">
      <script>
      function Ctrl($scope, $sce) {
@@ -104,7 +104,7 @@
      </table>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should sanitize the html snippet by default', function() {
        expect(element(by.css('#bind-html-with-sanitize div')).getInnerHtml()).
          toBe('<p>an html\n<em>click here</em>\nsnippet</p>');
@@ -210,7 +210,7 @@
 //Attributes that have href and hence need to be sanitized
     var uriAttrs = makeMap("background,cite,href,longdesc,src,usemap");
     var validAttrs = angular.extend({}, uriAttrs, makeMap(
-        'abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
+            'abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
             'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,' +
             'ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,' +
             'scope,scrolling,shape,size,span,start,summary,target,title,type,' +
@@ -410,7 +410,7 @@
     function encodeEntities(value) {
         return value.
             replace(/&/g, '&amp;').
-            replace(NON_ALPHANUMERIC_REGEXP,function (value) {
+            replace(NON_ALPHANUMERIC_REGEXP, function (value) {
                 return '&#' + value.charCodeAt(0) + ';';
             }).
             replace(/</g, '&lt;').
@@ -498,7 +498,7 @@
      <span ng-bind-html="linky_expression | linky"></span>
      *
      * @example
-     <example module="ngSanitize" deps="angular-sanitize.js">
+     <example module="ngSanitize" deps="angular-sanitize.ui">
      <file name="index.html">
      <script>
      function Ctrl($scope) {
@@ -544,7 +544,7 @@
      </tr>
      </table>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should linkify the snippet with urls', function() {
          expect(element(by.id('linky-filter')).element(by.binding('snippet | linky')).getText()).
              toBe('Pretty text with some links: http://angularjs.org/, us@somewhere.org, ' +

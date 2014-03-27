@@ -1,0 +1,13 @@
+//
+   Created by kishore.relangi on 3/26/14.
+doctype html
+html(ng-app)
+    head
+        script(type="text/javascript", src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js")
+        script(type="text/javascript", src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js")
+    body
+        pre {{arr | json}}
+        button(ng-click="arr=[]") Init
+        button(ng-click="arr.push(0)") Plus
+
+        pre(ng-repeat="a in arr track by $index") {{a}}

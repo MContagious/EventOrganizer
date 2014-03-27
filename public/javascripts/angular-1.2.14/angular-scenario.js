@@ -151,7 +151,7 @@
                         // scripts is true for back-compat
                         jQuery.merge(this, jQuery.parseHTML(
                             match[1],
-                            context && context.nodeType ? context.ownerDocument || context : document,
+                                context && context.nodeType ? context.ownerDocument || context : document,
                             true
                         ));
 
@@ -440,7 +440,7 @@
             }
         },
 
-        // See test/unit/core.js for details concerning isFunction.
+        // See test/unit/core.ui for details concerning isFunction.
         // Since version 1.3, DOM methods and functions like alert
         // aren't supported. They return false on IE (#2968).
         isFunction: function (obj) {
@@ -562,7 +562,7 @@
 
                 if (data) {
                     // Make sure the incoming data is actual JSON
-                    // Logic borrowed from http://json.org/json2.js
+                    // Logic borrowed from http://json.org/json2.ui
                     if (rvalidchars.test(data.replace(rvalidescape, "@")
                         .replace(rvalidtokens, "]")
                         .replace(rvalidbraces, ""))) {
@@ -698,7 +698,7 @@
             if (arr != null) {
                 if (isArraylike(Object(arr))) {
                     jQuery.merge(ret,
-                        typeof arr === "string" ?
+                            typeof arr === "string" ?
                             [ arr ] : arr
                     );
                 } else {
@@ -1148,10 +1148,10 @@
                 return high !== high || escapedWhitespace ?
                     escaped :
                     // BMP codepoint
-                    high < 0 ?
-                        String.fromCharCode(high + 0x10000) :
-                        // Supplemental Plane codepoint (surrogate pair)
-                        String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
+                        high < 0 ?
+                    String.fromCharCode(high + 0x10000) :
+                    // Supplemental Plane codepoint (surrogate pair)
+                    String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
             };
 
 // Optimize for push.apply( _, NodeList )
@@ -1368,7 +1368,7 @@
             var cur = b && a,
                 diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
                     ( ~b.sourceIndex || MAX_NEGATIVE ) -
-                        ( ~a.sourceIndex || MAX_NEGATIVE );
+                    ( ~a.sourceIndex || MAX_NEGATIVE );
 
             // Use IE sourceIndex if available on both nodes
             if (diff) {
@@ -1749,12 +1749,12 @@
                         // Parentless nodes are either documents or disconnected
                     } else if (!aup || !bup) {
                         return a === doc ? -1 :
-                            b === doc ? 1 :
-                                aup ? -1 :
-                                    bup ? 1 :
-                                        sortInput ?
-                                            ( indexOf.call(sortInput, a) - indexOf.call(sortInput, b) ) :
-                                            0;
+                                b === doc ? 1 :
+                            aup ? -1 :
+                                bup ? 1 :
+                                    sortInput ?
+                                        ( indexOf.call(sortInput, a) - indexOf.call(sortInput, b) ) :
+                                        0;
 
                         // If the nodes are siblings, we can do a quick check
                     } else if (aup === bup) {
@@ -1781,9 +1781,9 @@
                         siblingCheck(ap[i], bp[i]) :
 
                         // Otherwise nodes in our document sort first
-                        ap[i] === preferredDoc ? -1 :
+                            ap[i] === preferredDoc ? -1 :
                             bp[i] === preferredDoc ? 1 :
-                                0;
+                        0;
                 };
 
             return doc;
@@ -1844,11 +1844,11 @@
                     undefined;
 
             return val === undefined ?
-                support.attributes || !documentIsHTML ?
-                    elem.getAttribute(name) :
+                    support.attributes || !documentIsHTML ?
+                elem.getAttribute(name) :
                     (val = elem.getAttributeNode(name)) && val.specified ?
-                        val.value :
-                        null :
+                val.value :
+                null :
                 val;
         };
 
@@ -2033,9 +2033,9 @@
 
                     return pattern ||
                         (pattern = new RegExp("(^|" + whitespace + ")" + className + "(" + whitespace + "|$)")) &&
-                            classCache(className, function (elem) {
-                                return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== strundefined && elem.getAttribute("class") || "");
-                            });
+                        classCache(className, function (elem) {
+                            return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== strundefined && elem.getAttribute("class") || "");
+                        });
                 },
 
                 "ATTR": function (name, operator, check) {
@@ -2052,13 +2052,13 @@
                         result += "";
 
                         return operator === "=" ? result === check :
-                            operator === "!=" ? result !== check :
+                                operator === "!=" ? result !== check :
                                 operator === "^=" ? check && result.indexOf(check) === 0 :
-                                    operator === "*=" ? check && result.indexOf(check) > -1 :
-                                        operator === "$=" ? check && result.slice(-check.length) === check :
-                                            operator === "~=" ? ( " " + result + " " ).indexOf(check) > -1 :
-                                                operator === "|=" ? result === check || result.slice(0, check.length + 1) === check + "-" :
-                                                    false;
+                                operator === "*=" ? check && result.indexOf(check) > -1 :
+                                operator === "$=" ? check && result.slice(-check.length) === check :
+                                operator === "~=" ? ( " " + result + " " ).indexOf(check) > -1 :
+                                operator === "|=" ? result === check || result.slice(0, check.length + 1) === check + "-" :
+                            false;
                     };
                 },
 
@@ -2590,13 +2590,13 @@
 
                     matcherOut = matcher ?
                         // If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting results,
-                        postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
+                            postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
 
-                            // ...intermediate processing is necessary
-                            [] :
+                        // ...intermediate processing is necessary
+                        [] :
 
-                            // ...otherwise use results directly
-                            results :
+                        // ...otherwise use results directly
+                        results :
                         matcherIn;
 
                 // Find primary matches
@@ -2647,7 +2647,7 @@
                     // Add elements to results, through postFinder if defined
                 } else {
                     matcherOut = condense(
-                        matcherOut === results ?
+                            matcherOut === results ?
                             matcherOut.splice(preexisting, matcherOut.length) :
                             matcherOut
                     );
@@ -2697,15 +2697,15 @@
                             }
                         }
                         return setMatcher(
-                            i > 1 && elementMatcher(matchers),
-                            i > 1 && toSelector(
+                                i > 1 && elementMatcher(matchers),
+                                i > 1 && toSelector(
                                 // If the preceding token was a descendant combinator, insert an implicit any-element `*`
                                 tokens.slice(0, i - 1).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
                             ).replace(rtrim, "$1"),
                             matcher,
-                            i < j && matcherFromTokens(tokens.slice(i, j)),
-                            j < len && matcherFromTokens((tokens = tokens.slice(j))),
-                            j < len && toSelector(tokens)
+                                i < j && matcherFromTokens(tokens.slice(i, j)),
+                                j < len && matcherFromTokens((tokens = tokens.slice(j))),
+                                j < len && toSelector(tokens)
                         );
                     }
                     matchers.push(matcher);
@@ -2886,7 +2886,7 @@
                             // Search, expanding context for leading sibling combinators
                             if ((seed = find(
                                 token.matches[0].replace(runescape, funescape),
-                                rsibling.test(tokens[0].type) && context.parentNode || context
+                                    rsibling.test(tokens[0].type) && context.parentNode || context
                             ))) {
 
                                 // If seed is empty or no tokens remain, we can return early
@@ -2973,7 +2973,7 @@
                 if (!isXML) {
                     return (val = elem.getAttributeNode(name)) && val.specified ?
                         val.value :
-                        elem[ name ] === true ? name.toLowerCase() : null;
+                            elem[ name ] === true ? name.toLowerCase() : null;
                 }
             });
         }
@@ -3518,7 +3518,7 @@
                 support.boxSizing = div.offsetWidth === 4;
             });
 
-            // Use window.getComputedStyle because jsdom on node.js will break without it.
+            // Use window.getComputedStyle because jsdom on node.ui will break without it.
             if (window.getComputedStyle) {
                 support.pixelPosition = ( window.getComputedStyle(div, null) || {} ).top !== "1%";
                 support.boxSizingReliable = ( window.getComputedStyle(div, null) || { width: "4px" } ).width === "4px";
@@ -3872,12 +3872,12 @@
             if (typeof data === "string") {
                 try {
                     data = data === "true" ? true :
-                        data === "false" ? false :
+                            data === "false" ? false :
                             data === "null" ? null :
-                                // Only convert to a number if it doesn't change the string
-                                +data + "" === data ? +data :
-                                    rbrace.test(data) ? jQuery.parseJSON(data) :
-                                        data;
+                        // Only convert to a number if it doesn't change the string
+                            +data + "" === data ? +data :
+                        rbrace.test(data) ? jQuery.parseJSON(data) :
+                            data;
                 } catch (e) {
                 }
 
@@ -4245,7 +4245,7 @@
                         // handle most common string cases
                         ret.replace(rreturn, "") :
                         // handle cases where value is null/undef or number
-                        ret == null ? "" : ret;
+                            ret == null ? "" : ret;
                 }
 
                 return;
@@ -4498,9 +4498,9 @@
 
                     return tabindex ?
                         parseInt(tabindex, 10) :
-                        rfocusable.test(elem.nodeName) || rclickable.test(elem.nodeName) && elem.href ?
-                            0 :
-                            -1;
+                            rfocusable.test(elem.nodeName) || rclickable.test(elem.nodeName) && elem.href ?
+                        0 :
+                        -1;
                 }
             }
         }
@@ -4533,11 +4533,11 @@
                     ret = isXML ?
                         undefined :
                         /* jshint eqeqeq: false */
-                        (jQuery.expr.attrHandle[ name ] = undefined) !=
-                            getter(elem, name, isXML) ?
+                            (jQuery.expr.attrHandle[ name ] = undefined) !=
+                        getter(elem, name, isXML) ?
 
-                            name.toLowerCase() :
-                            null;
+                        name.toLowerCase() :
+                        null;
                 jQuery.expr.attrHandle[ name ] = fn;
                 return ret;
             } :
@@ -4594,9 +4594,9 @@
                 var ret;
                 return isXML ?
                     undefined :
-                    (ret = elem.getAttributeNode(name)) && ret.value !== "" ?
-                        ret.value :
-                        null;
+                        (ret = elem.getAttributeNode(name)) && ret.value !== "" ?
+                    ret.value :
+                    null;
             };
         jQuery.valHooks.button = {
             get: function (elem, name) {
@@ -5777,7 +5777,7 @@
 
                 // If this is a positional/relative selector, check membership in the returned set
                 // so $("p:first").is("p:last") won't return true for a doc with two "p".
-                typeof selector === "string" && rneedsContext.test(selector) ?
+                    typeof selector === "string" && rneedsContext.test(selector) ?
                     jQuery(selector) :
                     selector || [],
                 false
@@ -5801,7 +5801,7 @@
 
                         // Don't pass non-elements to Sizzle
                         cur.nodeType === 1 &&
-                            jQuery.find.matchesSelector(cur, selectors))) {
+                        jQuery.find.matchesSelector(cur, selectors))) {
 
                         cur = ret.push(cur);
                         break;
@@ -5843,7 +5843,7 @@
 
         addBack: function (selector) {
             return this.add(selector == null ?
-                this.prevObject : this.prevObject.filter(selector)
+                    this.prevObject : this.prevObject.filter(selector)
             );
         }
     });
@@ -6313,7 +6313,7 @@
             jQuery.nodeName(content.nodeType === 1 ? content : content.firstChild, "tr") ?
 
             elem.getElementsByTagName("tbody")[0] ||
-                elem.appendChild(elem.ownerDocument.createElement("tbody")) :
+            elem.appendChild(elem.ownerDocument.createElement("tbody")) :
             elem;
     }
 
@@ -6467,8 +6467,8 @@
         var elems, elem,
             i = 0,
             found = typeof context.getElementsByTagName !== core_strundefined ? context.getElementsByTagName(tag || "*") :
-                typeof context.querySelectorAll !== core_strundefined ? context.querySelectorAll(tag || "*") :
-                    undefined;
+                    typeof context.querySelectorAll !== core_strundefined ? context.querySelectorAll(tag || "*") :
+                undefined;
 
         if (!found) {
             for (found = [], elems = context.childNodes || context; (elem = elems[i]) != null; i++) {
@@ -6601,9 +6601,9 @@
                                 tmp.firstChild :
 
                                 // String was a bare <thead> or <tfoot>
-                                wrap[1] === "<table>" && !rtbody.test(elem) ?
-                                    tmp :
-                                    0;
+                                    wrap[1] === "<table>" && !rtbody.test(elem) ?
+                                tmp :
+                                0;
 
                             j = elem && elem.childNodes.length;
                             while (j--) {
@@ -7094,7 +7094,7 @@
     });
 
 // NOTE: we've included the "window" in window.getComputedStyle
-// because jsdom on node.js will break without it.
+// because jsdom on node.ui will break without it.
     if (window.getComputedStyle) {
         getStyles = function (elem) {
             return window.getComputedStyle(elem, null);
@@ -7200,7 +7200,7 @@
                 // If we already have the right measurement, avoid augmentation
                 4 :
                 // Otherwise initialize for horizontal or vertical properties
-                name === "width" ? 1 : 0,
+                    name === "width" ? 1 : 0,
 
             val = 0;
 
@@ -7270,7 +7270,7 @@
             augmentWidthOrHeight(
                 elem,
                 name,
-                extra || ( isBorderBox ? "border" : "content" ),
+                    extra || ( isBorderBox ? "border" : "content" ),
                 valueIsBorderBox,
                 styles
             )
@@ -7334,13 +7334,13 @@
             set: function (elem, value, extra) {
                 var styles = extra && getStyles(elem);
                 return setPositiveNumber(elem, value, extra ?
-                    augmentWidthOrHeight(
-                        elem,
-                        name,
-                        extra,
-                        jQuery.support.boxSizing && jQuery.css(elem, "boxSizing", false, styles) === "border-box",
-                        styles
-                    ) : 0
+                        augmentWidthOrHeight(
+                            elem,
+                            name,
+                            extra,
+                                jQuery.support.boxSizing && jQuery.css(elem, "boxSizing", false, styles) === "border-box",
+                            styles
+                        ) : 0
                 );
             }
         };
@@ -7619,7 +7619,7 @@
         _load = jQuery.fn.load,
 
     /* Prefilters
-     * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
+     * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.ui for an example)
      * 2) These are called:
      *    - BEFORE asking for a transport
      *    - AFTER param serialization (s.data is a string if s.processData is true)
@@ -7767,21 +7767,21 @@
                 data: params
             }).done(function (responseText) {
 
-                    // Save response for use in complete callback
-                    response = arguments;
+                // Save response for use in complete callback
+                response = arguments;
 
-                    self.html(selector ?
+                self.html(selector ?
 
-                        // If a selector was specified, locate the right elements in a dummy div
-                        // Exclude scripts to avoid IE 'Permission Denied' errors
-                        jQuery("<div>").append(jQuery.parseHTML(responseText)).find(selector) :
+                    // If a selector was specified, locate the right elements in a dummy div
+                    // Exclude scripts to avoid IE 'Permission Denied' errors
+                    jQuery("<div>").append(jQuery.parseHTML(responseText)).find(selector) :
 
-                        // Otherwise use the full result
-                        responseText);
+                    // Otherwise use the full result
+                    responseText);
 
-                }).complete(callback && function (jqXHR, status) {
-                    self.each(callback, response || [ jqXHR.responseText, status, jqXHR ]);
-                });
+            }).complete(callback && function (jqXHR, status) {
+                self.each(callback, response || [ jqXHR.responseText, status, jqXHR ]);
+            });
         }
 
         return this;
@@ -8028,7 +8028,7 @@
                 s.crossDomain = !!( parts &&
                     ( parts[ 1 ] !== ajaxLocParts[ 1 ] || parts[ 2 ] !== ajaxLocParts[ 2 ] ||
                         ( parts[ 3 ] || ( parts[ 1 ] === "http:" ? "80" : "443" ) ) !==
-                            ( ajaxLocParts[ 3 ] || ( ajaxLocParts[ 1 ] === "http:" ? "80" : "443" ) ) )
+                        ( ajaxLocParts[ 3 ] || ( ajaxLocParts[ 1 ] === "http:" ? "80" : "443" ) ) )
                     );
             }
 
@@ -8103,7 +8103,7 @@
             // Set the Accepts header for the server, depending on the dataType
             jqXHR.setRequestHeader(
                 "Accept",
-                s.dataTypes[ 0 ] && s.accepts[ s.dataTypes[0] ] ?
+                    s.dataTypes[ 0 ] && s.accepts[ s.dataTypes[0] ] ?
                     s.accepts[ s.dataTypes[0] ] + ( s.dataTypes[ 0 ] !== "*" ? ", " + allTypes + "; q=0.01" : "" ) :
                     s.accepts[ "*" ]
             );
@@ -8954,7 +8954,7 @@
                 tweens: [],
                 createTween: function (prop, end) {
                     var tween = jQuery.Tween(elem, animation.opts, prop, end,
-                        animation.opts.specialEasing[ prop ] || animation.opts.easing);
+                            animation.opts.specialEasing[ prop ] || animation.opts.easing);
                     animation.tweens.push(tween);
                     return tween;
                 },
@@ -9473,7 +9473,7 @@
         };
 
         opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
-            opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
+                opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
 
         // normalize opt.queue - true/undefined/null -> "fx"
         if (opt.queue == null || opt.queue === true) {
@@ -9559,7 +9559,7 @@
 
     if (jQuery.expr && jQuery.expr.filters) {
         jQuery.expr.filters.animated = function (elem) {
-            return jQuery.grep(jQuery.timers,function (fn) {
+            return jQuery.grep(jQuery.timers, function (fn) {
                 return elem === fn.elem;
             }).length;
         };
@@ -9729,9 +9729,9 @@
     function getWindow(elem) {
         return jQuery.isWindow(elem) ?
             elem :
-            elem.nodeType === 9 ?
-                elem.defaultView || elem.parentWindow :
-                false;
+                elem.nodeType === 9 ?
+            elem.defaultView || elem.parentWindow :
+            false;
     }
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
@@ -10054,7 +10054,7 @@
 
 
     var /** holds major version number for IE or NaN for real browsers */
-            msie,
+        msie,
         jqLite,           // delay binding since jQuery could be loaded after us.
         jQuery,           // delay binding
         slice = [].slice,
@@ -10065,7 +10065,7 @@
 
         _angular = window.angular,
         /** @name angular */
-            angular = window.angular || (window.angular = {}),
+        angular = window.angular || (window.angular = {}),
         angularModule,
         nodeName_,
         uid = ['0', '0', '0'];
@@ -10116,7 +10116,7 @@
      * It is worth noting that `.forEach` does not iterate over inherited properties because it filters
      * using the `hasOwnProperty` method.
      *
-     ```js
+     ```ui
      var values = {name: 'misko', gender: 'male'};
      var log = [];
      angular.forEach(values, function(value, key){
@@ -10279,7 +10279,7 @@
      * @description
      * A function that performs no operations. This function can be useful when writing code in the
      * functional style.
-     ```js
+     ```ui
      function foo(callback) {
        var result = calculateResult();
        (callback || angular.noop)(result);
@@ -10302,7 +10302,7 @@
      * A function that returns its first argument. This function is useful when writing code in the
      * functional style.
      *
-     ```js
+     ```ui
      function transformer(transformationFn, value) {
        return (transformationFn || angular.identity)(value);
      };
@@ -11097,7 +11097,7 @@
      I can add: {{a}} + {{b}} =  {{ a+b }}
      </div>
      </file>
-     <file name="script.js">
+     <file name="script.ui">
      angular.module('ngAppDemo', []).controller('ngAppDemoController', function($scope) {
      $scope.a = 1;
      $scope.b = 2;
@@ -11185,12 +11185,12 @@
             modules.unshift('ng');
             var injector = createInjector(modules);
             injector.invoke(['$rootScope', '$rootElement', '$compile', '$injector', '$animate',
-                function (scope, element, compile, injector, animate) {
-                    scope.$apply(function () {
-                        element.data('$injector', injector);
-                        compile(element)(scope);
-                    });
-                }]
+                    function (scope, element, compile, injector, animate) {
+                        scope.$apply(function () {
+                            element.data('$injector', injector);
+                            compile(element)(scope);
+                        });
+                    }]
             );
             return injector;
         };
@@ -11372,7 +11372,7 @@
              * A module is a collection of services, directives, filters, and configuration information.
              * `angular.module` is used to configure the {@link auto.$injector $injector}.
              *
-             * ```js
+             * ```ui
              * // Create a new module
              * var myModule = angular.module('myModule', []);
              *
@@ -11388,7 +11388,7 @@
              *
              * Then you can create an injector and load your modules like this:
              *
-             * ```js
+             * ```ui
              * var injector = angular.injector(['ng', 'MyModule'])
              * ```
              *
@@ -11530,7 +11530,7 @@
                          * Defines an animation hook that can be later used with
                          * {@link ngAnimate.$animate $animate} service and directives that use this service.
                          *
-                         * ```js
+                         * ```ui
                          * module.animation('.animation-name', function($inject1, $inject2) {
            *   return {
            *     eventName : function(element, done) {
@@ -11997,7 +11997,7 @@
      */
     function camelCase(name) {
         return name.
-            replace(SPECIAL_CHARS_REGEXP,function (_, separator, letter, offset) {
+            replace(SPECIAL_CHARS_REGEXP, function (_, separator, letter, offset) {
                 return offset ? letter.toUpperCase() : letter;
             }).
             replace(MOZ_HACK_REGEXP, 'Moz$1');
@@ -12181,9 +12181,9 @@
         if (cssClasses && element.setAttribute) {
             forEach(cssClasses.split(' '), function (cssClass) {
                 element.setAttribute('class', trim(
-                    (" " + (element.getAttribute('class') || '') + " ")
-                        .replace(/[\n\t]/g, " ")
-                        .replace(" " + trim(cssClass) + " ", " "))
+                        (" " + (element.getAttribute('class') || '') + " ")
+                            .replace(/[\n\t]/g, " ")
+                            .replace(" " + trim(cssClass) + " ", " "))
                 );
             });
         }
@@ -12605,7 +12605,7 @@
 
                         // Refer to jQuery's implementation of mouseenter & mouseleave
                         // Read about mouseenter and mouseleave:
-                        // http://www.quirksmode.org/js/events_mouse.html#link8
+                        // http://www.quirksmode.org/ui/events_mouse.html#link8
                         var eventmap = { mouseleave: "mouseout", mouseenter: "mouseover"};
 
                         onFn(element, eventmap[type], function (event) {
@@ -12875,7 +12875,7 @@
      *
      * @example
      * Typical usage
-     * ```js
+     * ```ui
      *   // create an injector
      *   var $injector = angular.injector(['ng']);
      *
@@ -12899,7 +12899,7 @@
      * directive is added to the end of the document body by JQuery. We then compile and link
      * it into the current AngularJS scope.
      *
-     * ```js
+     * ```ui
      * var $div = $('<div ng-controller="MyCtrl">{{content.label}}</div>');
      * $(document.body).append($div);
      *
@@ -12970,7 +12970,7 @@
      *
      * The following always holds true:
      *
-     * ```js
+     * ```ui
      *   var $injector = angular.injector();
      *   expect($injector.get('$injector')).toBe($injector);
      *   expect($injector.invoke(function($injector){
@@ -12983,7 +12983,7 @@
      * JavaScript does not have annotations, and annotations are needed for dependency injection. The
      * following are all valid ways of annotating function with injection arguments and are equivalent.
      *
-     * ```js
+     * ```ui
      *   // inferred (only works if code not minified/obfuscated)
      *   $injector.invoke(function(serviceA){});
      *
@@ -13075,7 +13075,7 @@
      * The simplest form is to extract the dependencies from the arguments of the function. This is done
      * by converting the function into a string using `toString()` method and extracting the argument
      * names.
-     * ```js
+     * ```ui
      *   // Given
      *   function MyController($scope, $route) {
  *     // ...
@@ -13092,7 +13092,7 @@
      *
      * If a function has an `$inject` property and its value is an array of strings, then the strings
      * represent names of services to be injected into the function.
-     * ```js
+     * ```ui
      *   // Given
      *   var MyController = function(obfuscatedScope, obfuscatedRoute) {
  *     // ...
@@ -13110,7 +13110,7 @@
      * is very inconvenient. In these situations using the array notation to specify the dependencies in
      * a way that survives minification is a better choice:
      *
-     * ```js
+     * ```ui
      *   // We wish to write this (not minification / obfuscation safe)
      *   injector.invoke(function($compile, $rootScope) {
  *     // ...
@@ -13217,7 +13217,7 @@
      * The following example shows how to create a simple event tracking service and register it using
      * {@link auto.$provide#provider $provide.provider()}.
      *
-     * ```js
+     * ```ui
      *  // Define the eventTracker provider
      *  function EventTrackerProvider() {
  *    var trackingUrl = '/track';
@@ -13295,7 +13295,7 @@
      *
      * @example
      * Here is an example of registering a service
-     * ```js
+     * ```ui
      *   $provide.factory('ping', ['$http', function($http) {
  *     return function ping() {
  *       return $http.send('/ping');
@@ -13303,7 +13303,7 @@
  *   }]);
      * ```
      * You would then inject and use this service like this:
-     * ```js
+     * ```ui
      *   someModule.controller('Ctrl', ['ping', function(ping) {
  *     ping();
  *   }]);
@@ -13331,7 +13331,7 @@
      * @example
      * Here is an example of registering a service using
      * {@link auto.$provide#service $provide.service(class)}.
-     * ```js
+     * ```ui
      *   var Ping = function($http) {
  *     this.$http = $http;
  *   };
@@ -13344,7 +13344,7 @@
      *   $provide.service('ping', Ping);
      * ```
      * You would then inject and use this service like this:
-     * ```js
+     * ```ui
      *   someModule.controller('Ctrl', ['ping', function(ping) {
  *     ping.send();
  *   }]);
@@ -13373,7 +13373,7 @@
      *
      * @example
      * Here are some examples of creating value services.
-     * ```js
+     * ```ui
      *   $provide.value('ADMIN_USER', 'admin');
      *
      *   $provide.value('RoleLookup', { admin: 0, writer: 1, reader: 2 });
@@ -13401,7 +13401,7 @@
      *
      * @example
      * Here a some examples of creating constants:
-     * ```js
+     * ```ui
      *   $provide.constant('SHARD_HEIGHT', 306);
      *
      *   $provide.constant('MY_COLOURS', ['red', 'blue', 'grey']);
@@ -13435,7 +13435,7 @@
      * @example
      * Here we decorate the {@link ng.$log $log} service to convert warnings to errors by intercepting
      * calls to {@link ng.$log#error $log.warn()}.
-     * ```js
+     * ```ui
      *   $provide.decorator('$log', ['$delegate', function($delegate) {
  *     $delegate.warn = $delegate.error;
  *     return $delegate;
@@ -13619,7 +13619,7 @@
                             'Incorrect injection token! Expected service name as string, got {0}', key);
                     }
                     args.push(
-                        locals && locals.hasOwnProperty(key)
+                            locals && locals.hasOwnProperty(key)
                             ? locals[key]
                             : getService(key)
                     );
@@ -13684,7 +13684,7 @@
      <a id="bottom"></a> You're at the bottom!
      </div>
      </file>
-     <file name="script.js">
+     <file name="script.ui">
      function ScrollCtrl($scope, $location, $anchorScroll) {
          $scope.gotoBottom = function (){
            // set the location.hash to the id of
@@ -13776,7 +13776,7 @@
      *
      * In order to enable animations the ngAnimate module has to be loaded.
      *
-     * To see the functional implementation check out src/ngAnimate/animate.js
+     * To see the functional implementation check out src/ngAnimate/animate.ui
      */
     var $AnimateProvider = ['$provide', function ($provide) {
 
@@ -13799,7 +13799,7 @@
          *   triggered.
          *
          *
-         * ```js
+         * ```ui
          *   return {
      *     eventFn : function(element, done) {
      *       //code to run the animation
@@ -14417,7 +14417,7 @@
      * @description
      * Factory that constructs cache objects and gives access to them.
      *
-     * ```js
+     * ```ui
      *
      *  var cache = $cacheFactory('cacheId');
      *  expect($cacheFactory.get('cacheId')).toBe(cache);
@@ -14634,7 +14634,7 @@
      *
      * Adding via the $templateCache service:
      *
-     * ```js
+     * ```ui
      * var myApp = angular.module('myApp', []);
      * myApp.run(function($templateCache) {
  *   $templateCache.put('templateId.html', 'This is the content of the template');
@@ -14647,7 +14647,7 @@
      * ```
      *
      * or get it via Javascript:
-     * ```js
+     * ```ui
      * $templateCache.get('templateId.html')
      * ```
      *
@@ -14710,7 +14710,7 @@
      *
      * Here's an example directive declared with a Directive Definition Object:
      *
-     * ```js
+     * ```ui
      *   var myModule = angular.module(...);
      *
      *   myModule.directive('directiveName', function factory(injectables) {
@@ -14751,7 +14751,7 @@
      *
      * Therefore the above can be simplified as:
      *
-     * ```js
+     * ```ui
      *   var myModule = angular.module(...);
      *
      *   myModule.directive('directiveName', function factory(injectables) {
@@ -14916,7 +14916,7 @@
      *
      * #### `compile`
      *
-     * ```js
+     * ```ui
      *   function compile(tElement, tAttrs, transclude) { ... }
      * ```
      *
@@ -14961,7 +14961,7 @@
      * #### `link`
      * This property is used only if the `compile` property is not defined.
      *
-     * ```js
+     * ```ui
      *   function link(scope, iElement, iAttrs, controller, transcludeFn) { ... }
      * ```
      *
@@ -15021,7 +15021,7 @@
      *   the only way to easily get the actual value because during the linking phase the interpolation
      *   hasn't been evaluated yet and so the value is at this time set to `undefined`.
      *
-     * ```js
+     * ```ui
      * function linkingFn(scope, elm, attrs, ctrl) {
  *   // get the attribute value
  *   console.log(attrs.ngModel);
@@ -15084,7 +15084,7 @@
      <div compile="html"></div>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should auto compile', function() {
        var textarea = $('textarea');
        var output = $('div[compile]');
@@ -15125,14 +15125,14 @@
      *
      * - If you are not asking the linking function to clone the template, create the DOM element(s)
      *   before you send them to the compiler and keep this reference around.
-     *   ```js
+     *   ```ui
      *     var element = $compile('<p>{{total}}</p>')(scope);
      *   ```
      *
      * - if on the other hand, you need the element to be cloned, the view reference from the original
      *   example would not point to the clone, but rather to the original template that was cloned. In
      *   this case, you can access the clone via the cloneAttachFn:
-     *   ```js
+     *   ```ui
      *     var templateElement = angular.element('<p>{{total}}</p>'),
      *         scope = ....;
      *
@@ -15869,7 +15869,7 @@
                                 replaceWith(jqCollection, jqLite(sliceArgs($template)), compileNode);
 
                                 childTranscludeFn = compile($template, transcludeFn, terminalPriority,
-                                    replaceDirective && replaceDirective.name, {
+                                        replaceDirective && replaceDirective.name, {
                                         // Don't pass in:
                                         // - controllerDirectives - otherwise we'll create duplicates controllers
                                         // - newIsolateScopeDirective or templateDirective - combining templates with
@@ -16123,7 +16123,7 @@
 
                                     default:
                                         throw $compileMinErr('iscp',
-                                            "Invalid isolate scope definition for directive '{0}'." +
+                                                "Invalid isolate scope definition for directive '{0}'." +
                                                 " Definition: {... {1}: '{2}' ...}",
                                             newIsolateScopeDirective.name, scopeName, definition);
                                 }
@@ -16166,7 +16166,7 @@
                             try {
                                 linkFn = preLinkFns[i];
                                 linkFn(linkFn.isolateScope ? isolateScope : scope, $element, attrs,
-                                    linkFn.require && getControllers(linkFn.require, $element, elementControllers), transcludeFn);
+                                        linkFn.require && getControllers(linkFn.require, $element, elementControllers), transcludeFn);
                             } catch (e) {
                                 $exceptionHandler(e, startingTag($element));
                             }
@@ -16186,7 +16186,7 @@
                             try {
                                 linkFn = postLinkFns[i];
                                 linkFn(linkFn.isolateScope ? isolateScope : scope, $element, attrs,
-                                    linkFn.require && getControllers(linkFn.require, $element, elementControllers), transcludeFn);
+                                        linkFn.require && getControllers(linkFn.require, $element, elementControllers), transcludeFn);
                             } catch (e) {
                                 $exceptionHandler(e, startingTag($element));
                             }
@@ -16503,7 +16503,7 @@
 
                                     if (EVENT_HANDLER_ATTR_REGEXP.test(name)) {
                                         throw $compileMinErr('nodomevents',
-                                            "Interpolations for HTML DOM event attributes are disallowed.  Please use the " +
+                                                "Interpolations for HTML DOM event attributes are disallowed.  Please use the " +
                                                 "ng- versions (such as ng-click instead of onclick) instead.");
                                     }
 
@@ -16757,7 +16757,7 @@
                     if (!(locals && typeof locals.$scope == 'object')) {
                         throw minErr('$controller')('noscp',
                             "Cannot export controller '{0}' as '{1}'! No $scope object provided via `locals`.",
-                            constructor || expression.name, identifier);
+                                constructor || expression.name, identifier);
                     }
 
                     locals.$scope[identifier] = instance;
@@ -16792,12 +16792,12 @@
      * The default implementation simply delegates to `$log.error` which logs it into
      * the browser console.
      *
-     * In unit tests, if `angular-mocks.js` is loaded, this service is overridden by
+     * In unit tests, if `angular-mocks.ui` is loaded, this service is overridden by
      * {@link ngMock.$exceptionHandler mock $exceptionHandler} which aids in testing.
      *
      * ## Example:
      *
-     * ```js
+     * ```ui
      *   angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
  *     return function (exception, cause) {
  *       exception.message += ' (caused by "' + cause + '")';
@@ -17023,7 +17023,7 @@
                  * that is used to generate an HTTP request and returns  a {@link ng.$q promise}
                  * with two $http specific methods: `success` and `error`.
                  *
-                 * ```js
+                 * ```ui
                  *   $http({method: 'GET', url: '/someUrl'}).
                  *     success(function(data, status, headers, config) {
      *       // this callback will be called asynchronously
@@ -17062,7 +17062,7 @@
                  * POST/PUT requests require request data to be provided as well, shortcut methods
                  * were created:
                  *
-                 * ```js
+                 * ```ui
                  *   $http.get('/someUrl').success(successCallback);
                  *   $http.post('/someUrl', data).success(successCallback);
                  * ```
@@ -17190,7 +17190,7 @@
                  *     resolved with a rejection.
                  *
                  *
-                 * ```js
+                 * ```ui
                  *   // register the interceptor as a service
                  *   $provide.factory('myHttpInterceptor', function($q, dependency1, dependency2) {
      *     return {
@@ -17261,7 +17261,7 @@
                  * injected with dependencies (if specified) and returns the interceptor  — a function that
                  * takes a {@link ng.$q promise} and returns the original or a new promise.
                  *
-                 * ```js
+                 * ```ui
                  *   // register the interceptor as a service
                  *   $provide.factory('myHttpInterceptor', function($q, dependency1, dependency2) {
      *     return function(promise) {
@@ -17310,12 +17310,12 @@
                  * Angular will automatically strip the prefix before processing it as JSON.
                  *
                  * For example if your server needs to return:
-                 * ```js
+                 * ```ui
                  * ['one','two']
                  * ```
                  *
                  * which is vulnerable to attack, your server can return:
-                 * ```js
+                 * ```ui
                  * )]}',
                  * ['one','two']
                  * ```
@@ -17423,7 +17423,7 @@
                  <pre>http response data: {{data}}</pre>
                  </div>
                  </file>
-                 <file name="script.js">
+                 <file name="script.ui">
                  function FetchCtrl($scope, $http, $templateCache) {
     $scope.method = 'GET';
     $scope.url = 'http-hello.html';
@@ -17452,7 +17452,7 @@
                  <file name="http-hello.html">
                  Hello, $http!
                  </file>
-                 <file name="protractor.js" type="protractor">
+                 <file name="protractor.ui" type="protractor">
                  var status = element(by.binding('status'));
                  var data = element(by.binding('data'));
                  var fetchBtn = element(by.id('fetchbtn'));
@@ -17952,7 +17952,7 @@
                         }
 
                         completeRequest(callback,
-                            status || xhr.status,
+                                status || xhr.status,
                             response,
                             responseHeaders);
                     }
@@ -18075,7 +18075,7 @@
      //demo.label//
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should interpolate binding with custom symbols', function() {
     expect(element(by.binding('demo.label')).getText()).toBe('This binding is brought you by // interpolation symbols.');
   });
@@ -18143,7 +18143,7 @@
              * interpolation markup.
              *
              *
-             * ```js
+             * ```ui
              *   var $interpolate = ...; // injected
              *   var exp = $interpolate('Hello {{name | uppercase}}!');
              *   expect(exp({name:'Angular'}).toEqual('Hello ANGULAR!');
@@ -18205,7 +18205,7 @@
                 // the load when auditing for XSS issues.
                 if (trustedContext && parts.length > 1) {
                     throw $interpolateMinErr('noconcat',
-                        "Error while interpolating: {0}\nStrict Contextual Escaping disallows " +
+                            "Error while interpolating: {0}\nStrict Contextual Escaping disallows " +
                             "interpolations that concatenate multiple expressions when a trusted value is " +
                             "required.  See http://docs.angularjs.org/api/ng.$sce", text);
                 }
@@ -19243,7 +19243,7 @@
      *
      * @example
      <example>
-     <file name="script.js">
+     <file name="script.ui">
      function LogCtrl($scope, $log) {
          $scope.$log = $log;
          $scope.message = 'Hello World!';
@@ -20551,7 +20551,7 @@
      *
      * Converts Angular {@link guide/expression expression} into a function.
      *
-     * ```js
+     * ```ui
      *   var getter = $parse('user.name');
      *   var setter = getter.assign;
      *   var context = {user:{name:'angular'}};
@@ -20740,7 +20740,7 @@
      * From the perspective of dealing with error handling, deferred and promise APIs are to
      * asynchronous programming what `try`, `catch` and `throw` keywords are to synchronous programming.
      *
-     * ```js
+     * ```ui
      *   // for the purpose of this example let's assume that variables `$q`, `scope` and `okToGreet`
      *   // are available in the current lexical scope (they could have been injected or passed in).
      *
@@ -20844,7 +20844,7 @@
      * Because calling the `then` method of a promise returns a new derived promise, it is easily
      * possible to create a chain of promises:
      *
-     * ```js
+     * ```ui
      *   promiseB = promiseA.then(function(result) {
  *     return result + 1;
  *   });
@@ -20871,7 +20871,7 @@
      *
      *  # Testing
      *
-     *  ```js
+     *  ```ui
      *    it('should simulate promise', inject(function($q, $rootScope) {
  *      var deferred = $q.defer();
  *      var promise = deferred.promise;
@@ -21086,7 +21086,7 @@
          * current promise, you have to "rethrow" the error by returning a rejection constructed via
          * `reject`.
          *
-         * ```js
+         * ```ui
          *   promiseB = promiseA.then(function(result) {
    *     // success: do something and resolve promiseB
    *     //          with the old or a new result
@@ -21364,12 +21364,12 @@
                  *
                  * Here is a simple scope snippet to show how you can interact with the scope.
                  * ```html
-                 * <file src="./test/ng/rootScopeSpec.js" tag="docs1" />
+                 * <file src="./test/ng/rootScopeSpec.ui" tag="docs1" />
                  * ```
                  *
                  * # Inheritance
                  * A scope can inherit from a parent scope, as in this example:
-                 * ```js
+                 * ```ui
                  var parent = $rootScope;
                  var child = parent.$new();
 
@@ -21515,7 +21515,7 @@
                      *
                      *
                      * # Example
-                     * ```js
+                     * ```ui
                      // let's assume that scope was dependency injected as the $rootScope
                      var scope = $rootScope;
                      scope.name = 'misko';
@@ -21645,7 +21645,7 @@
                      *
                      *
                      * # Example
-                     * ```js
+                     * ```ui
                      $scope.names = ['igor', 'matias', 'misko', 'james'];
                      $scope.dataCount = 4;
 
@@ -21793,7 +21793,7 @@
                      * In unit tests, you may need to call `$digest()` to simulate the scope life cycle.
                      *
                      * # Example
-                     * ```js
+                     * ```ui
                      var scope = ...;
                      scope.name = 'misko';
                      scope.counter = 0;
@@ -21902,7 +21902,7 @@
                             if ((dirty || asyncQueue.length) && !(ttl--)) {
                                 clearPhase();
                                 throw $rootScopeMinErr('infdig',
-                                    '{0} $digest() iterations reached. Aborting!\n' +
+                                        '{0} $digest() iterations reached. Aborting!\n' +
                                         'Watchers fired in the last 5 iterations: {1}',
                                     TTL, toJson(watchLog));
                             }
@@ -21973,7 +21973,7 @@
                         if (this.$$nextSibling) this.$$nextSibling.$$prevSibling = this.$$prevSibling;
 
                         // This is bogus code that works around Chrome's GC leak
-                        // see: https://github.com/angular/angular.js/issues/1313#issuecomment-10378451
+                        // see: https://github.com/angular/angular.ui/issues/1313#issuecomment-10378451
                         this.$parent = this.$$nextSibling = this.$$prevSibling = this.$$childHead =
                             this.$$childTail = null;
                     },
@@ -21989,7 +21989,7 @@
                      * expressions.
                      *
                      * # Example
-                     * ```js
+                     * ```ui
                      var scope = ng.$rootScope.Scope();
                      scope.a = 1;
                      scope.b = 2;
@@ -22072,7 +22072,7 @@
                      * ## Life cycle
                      *
                      * # Pseudo-Code of `$apply()`
-                     * ```js
+                     * ```ui
                      function $apply(expr) {
              try {
                return $eval(expr);
@@ -22440,7 +22440,7 @@
 // Helper functions follow.
 
 // Copied from:
-// http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962
+// http://docs.closure-library.googlecode.com/git/closure_goog_string_string.ui.source.html#line962
 // Prereq: s is a string.
     function escapeForRegexp(s) {
         return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
@@ -22703,7 +22703,7 @@
              * See {@link ng.$sce $sce} for enabling strict contextual escaping.
              *
              * @param {string} type The kind of context in which this value is safe for use.  e.g. url,
-             *   resourceUrl, html, js and css.
+             *   resourceUrl, html, ui and css.
              * @param {*} value The value that that should be considered trusted/safe.
              * @returns {*} A value that can be used to stand in for the provided `value` in places
              * where Angular expects a $sce.trustAs() return value.
@@ -22984,7 +22984,7 @@
      *      (even when the RegExp did not have the `^` and `$` codes.)  In addition, any flags
      *      present on the RegExp (such as multiline, global, ignoreCase) are ignored.
      *    - If you are generating your JavaScript from some other templating engine (not
-     *      recommended, e.g. in issue [#4006](https://github.com/angular/angular.js/issues/4006)),
+     *      recommended, e.g. in issue [#4006](https://github.com/angular/angular.ui/issues/4006)),
      *      remember to escape your regular expression (and be aware that you might need more than
      *      one level of escaping depending on your templating engine and the way you interpolated
      *      the value.)  Do make use of your platform's escaping mechanism as it might be good
@@ -22993,14 +22993,14 @@
      *      and Python has [re.escape](http://docs.python.org/library/re.html#re.escape).
      *      Javascript lacks a similar built in function for escaping.  Take a look at Google
      *      Closure library's [goog.string.regExpEscape(s)](
-     *      http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962).
+     *      http://docs.closure-library.googlecode.com/git/closure_goog_string_string.ui.source.html#line962).
      *
      * Refer {@link ng.$sceDelegateProvider $sceDelegateProvider} for an example.
      *
      * ## Show me an example using SCE.
      *
      * @example
-     <example module="mySceApp" deps="angular-sanitize.js">
+     <example module="mySceApp" deps="angular-sanitize.ui">
      <file name="index.html">
      <div ng-controller="myAppController as myCtrl">
      <i ng-bind-html="myCtrl.explicitlyTrustedHtml" id="explicitlyTrustedHtml"></i><br><br>
@@ -23018,7 +23018,7 @@
      </div>
      </file>
 
-     <file name="script.js">
+     <file name="script.ui">
      var mySceApp = angular.module('mySceApp', ['ngSanitize']);
 
      mySceApp.controller("myAppController", function myAppController($http, $templateCache, $sce) {
@@ -23044,7 +23044,7 @@
      ]
      </file>
 
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      describe('SCE doc demo', function() {
     it('should sanitize untrusted values', function() {
       expect(element(by.css('.htmlComment')).getInnerHtml())
@@ -23148,7 +23148,7 @@
          *
          * Inheritance happens to capture this in a natural way.  In some future, we
          * may not use inheritance anymore.  That is OK because no code outside of
-         * sce.js and sceSpecs.js would need to be aware of this detail.
+         * sce.ui and sceSpecs.ui would need to be aware of this detail.
          */
 
         this.$get = ['$parse', '$sniffer', '$sceDelegate', function ($parse, $sniffer, $sceDelegate) {
@@ -23156,7 +23156,7 @@
             // the "expression(javascript expression)" syntax which is insecure.
             if (enabled && $sniffer.msie && $sniffer.msieDocumentMode < 8) {
                 throw $sceMinErr('iequirks',
-                    'Strict Contextual Escaping does not support Internet Explorer version < 9 in quirks ' +
+                        'Strict Contextual Escaping does not support Internet Explorer version < 9 in quirks ' +
                         'mode.  You can fix this by adding the text <!doctype html> to the top of your HTML ' +
                         'document.  See http://docs.angularjs.org/api/ng.$sce for more information.');
             }
@@ -23231,7 +23231,7 @@
              * escaping.
              *
              * @param {string} type The kind of context in which this value is safe for use.  e.g. url,
-             *   resource_url, html, js and css.
+             *   resource_url, html, ui and css.
              * @param {*} value The value that that should be considered trusted/safe.
              * @returns {*} A value that can be used to stand in for the provided `value` in places
              * where Angular expects a $sce.trustAs() return value.
@@ -23539,7 +23539,7 @@
                 // Android has history.pushState, but it does not update location correctly
                 // so let's not use the history API at all.
                 // http://code.google.com/p/android/issues/detail?id=17471
-                // https://github.com/angular/angular.js/issues/904
+                // https://github.com/angular/angular.ui/issues/904
 
                 // older webkit browser (533.9) on Boxee box has exactly the same problem as Android has
                 // so let's not use the history API also
@@ -23700,7 +23700,7 @@
      *   http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
      *   http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
      *   http://url.spec.whatwg.org/#urlutils
-     *   https://github.com/angular/angular.js/pull/2902
+     *   https://github.com/angular/angular.ui/pull/2902
      *   http://james.padolsey.com/javascript/parsing-urls-with-the-dom/
      *
      * @function
@@ -23791,7 +23791,7 @@
      <button ng-click="doGreeting(greeting)">ALERT</button>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should display the greeting in the input box', function() {
        element(by.model('greeting')).sendKeys('Hello, E2E Tests');
        // If we click the button it will block the test runner
@@ -23813,7 +23813,7 @@
      * Dependency Injected. To achieve this a filter definition consists of a factory function which is
      * annotated with dependencies and is responsible for creating a filter function.
      *
-     * ```js
+     * ```ui
      *   // Filter registration
      *   function MyModule($provide, $filterProvider) {
  *     // create a service to demonstrate injection (not always needed)
@@ -23837,7 +23837,7 @@
      * The filter function is registered with the `$injector` under the filter name suffix with
      * `Filter`.
      *
-     * ```js
+     * ```ui
      *   it('should be the same instance', inject(
      *     function($filterProvider) {
  *       $filterProvider.register('reverse', function(){
@@ -24011,7 +24011,7 @@
      </tr>
      </table>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var expectFriendNames = function(expectedNames, key) {
          element.all(by.repeater(key + ' in friends').column(key + '.name')).then(function(arr) {
            arr.forEach(function(wd, i) {
@@ -24182,7 +24182,7 @@
      custom currency identifier (USD$): <span>{{amount | currency:"USD$"}}</span>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should init with 1234.56', function() {
          expect(element(by.id('currency-default')).getText()).toBe('$1,234.56');
          expect(element(by.binding('amount | currency:"USD$"')).getText()).toBe('USD$1,234.56');
@@ -24242,7 +24242,7 @@
      Negative number: <span>{{-val | number:4}}</span>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should format numbers', function() {
          expect(element(by.id('number-default')).getText()).toBe('1,234.568');
          expect(element(by.binding('val | number:0')).getText()).toBe('1,235');
@@ -24493,7 +24493,7 @@
      <span ng-non-bindable>{{1288323623006 | date:'MM/dd/yyyy @ h:mma'}}</span>:
      <span>{{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}</span><br>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should format date', function() {
          expect(element(by.binding("1288323623006 | date:'medium'")).getText()).
             toMatch(/Oct 2\d, 2010 \d{1,2}:\d{2}:\d{2} (AM|PM)/);
@@ -24601,7 +24601,7 @@
      <file name="index.html">
      <pre>{{ {'name':'value'} | json }}</pre>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should jsonify filtered objects', function() {
          expect(element(by.binding("{'name':'value'}")).getText()).toMatch(/\{\n  "name": ?"value"\n}/);
        });
@@ -24673,7 +24673,7 @@
      <p>Output letters: {{ letters | limitTo:letterLimit }}</p>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var numLimitInput = element(by.model('numLimit'));
      var letterLimitInput = element(by.model('letterLimit'));
      var limitedNumbers = element(by.binding('numbers | limitTo:numLimit'));
@@ -24963,7 +24963,7 @@
      <a id="link-5" name="xxx" ng-click="value = 5">anchor</a> (no link)<br />
      <a id="link-6" ng-href="{{value}}">link</a> (link, change location)
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should execute ng-click but not reload when href without value', function() {
           element(by.id('link-1')).click();
           expect(element(by.model('value')).getAttribute('value')).toEqual('1');
@@ -25103,7 +25103,7 @@
      Click me to toggle: <input type="checkbox" ng-model="checked"><br/>
      <button ng-model="button" ng-disabled="checked">Button</button>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should toggle button', function() {
           expect(element(by.css('button')).getAttribute('disabled')).toBeFalsy();
           element(by.model('checked')).click();
@@ -25138,7 +25138,7 @@
      Check me to check both: <input type="checkbox" ng-model="master"><br/>
      <input id="checkSlave" type="checkbox" ng-checked="master">
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check both checkBoxes', function() {
           expect(element(by.id('checkSlave')).getAttribute('checked')).toBeFalsy();
           element(by.model('master')).click();
@@ -25173,7 +25173,7 @@
      Check me to make text readonly: <input type="checkbox" ng-model="checked"><br/>
      <input type="text" ng-readonly="checked" value="I'm Angular"/>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should toggle readonly attr', function() {
           expect(element(by.css('[type="text"]')).getAttribute('readonly')).toBeFalsy();
           element(by.model('checked')).click();
@@ -25212,7 +25212,7 @@
      <option id="greet" ng-selected="selected">Greetings!</option>
      </select>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should select Greetings!', function() {
           expect(element(by.id('greet')).getAttribute('selected')).toBeFalsy();
           element(by.model('selected')).click();
@@ -25248,7 +25248,7 @@
      <summary>Show/Hide me</summary>
      </details>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should toggle open', function() {
            expect(element(by.id('details')).getAttribute('open')).toBeFalsy();
            element(by.model('open')).click();
@@ -25628,7 +25628,7 @@
      * </pre>
      *
      * @example
-     <example deps="angular-animate.js" animations="true" fixBase="true">
+     <example deps="angular-animate.ui" animations="true" fixBase="true">
      <file name="index.html">
      <script>
      function Ctrl($scope) {
@@ -25655,7 +25655,7 @@
      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br>
      </form>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should initialize to model', function() {
           var userType = element(by.binding('userType'));
           var valid = element(by.binding('myForm.input.$valid'));
@@ -25803,7 +25803,7 @@
          <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
          </form>
          </file>
-         <file name="protractor.js" type="protractor">
+         <file name="protractor.ui" type="protractor">
          var text = element(by.binding('text'));
          var valid = element(by.binding('myForm.input.$valid'));
          var input = element(by.model('text'));
@@ -25881,7 +25881,7 @@
          <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
          </form>
          </file>
-         <file name="protractor.js" type="protractor">
+         <file name="protractor.ui" type="protractor">
          var value = element(by.binding('value'));
          var valid = element(by.binding('myForm.input.$valid'));
          var input = element(by.model('value'));
@@ -25956,7 +25956,7 @@
          <tt>myForm.$error.url = {{!!myForm.$error.url}}</tt><br/>
          </form>
          </file>
-         <file name="protractor.js" type="protractor">
+         <file name="protractor.ui" type="protractor">
          var text = element(by.binding('text'));
          var valid = element(by.binding('myForm.input.$valid'));
          var input = element(by.model('text'));
@@ -26032,7 +26032,7 @@
          <tt>myForm.$error.email = {{!!myForm.$error.email}}</tt><br/>
          </form>
          </file>
-         <file name="protractor.js" type="protractor">
+         <file name="protractor.ui" type="protractor">
          var text = element(by.binding('text'));
          var valid = element(by.binding('myForm.input.$valid'));
          var input = element(by.model('text'));
@@ -26096,7 +26096,7 @@
          </form>
          Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
          </file>
-         <file name="protractor.js" type="protractor">
+         <file name="protractor.ui" type="protractor">
          it('should change state', function() {
             var color = element(by.binding('color'));
 
@@ -26143,7 +26143,7 @@
          <tt>value2 = {{value2}}</tt><br/>
          </form>
          </file>
-         <file name="protractor.js" type="protractor">
+         <file name="protractor.ui" type="protractor">
          it('should change state', function() {
             var value1 = element(by.binding('value1'));
             var value2 = element(by.binding('value2'));
@@ -26538,7 +26538,7 @@
      <tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt><br>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var user = element(by.binding('{{user}}'));
      var userNameValid = element(by.binding('myForm.userName.$valid'));
      var lastNameValid = element(by.binding('myForm.lastName.$valid'));
@@ -26629,7 +26629,7 @@
      * @property {Array.<Function>} $formatters Array of functions to execute, as a pipeline, whenever
      the model value changes. Each function is called, in turn, passing the value through to the
      next. Used to format / convert values for display in the control and validation.
-     *      ```js
+     *      ```ui
      *      function formatter(value) {
  *        if (value) {
  *          return value.toUpperCase();
@@ -26678,7 +26678,7 @@
       }
 
      </file>
-     <file name="script.js">
+     <file name="script.ui">
      angular.module('customControl', []).
      directive('contenteditable', function() {
           return {
@@ -26723,7 +26723,7 @@
      <textarea ng-model="userContent"></textarea>
      </form>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should data-bind and become invalid', function() {
       if (browser.params.browser == 'safari' || browser.params.browser == 'firefox') {
         // SafariDriver can't handle contenteditable
@@ -26977,7 +26977,7 @@
      *
      * For best practices on using `ngModel`, see:
      *
-     *  - [https://github.com/angular/angular.js/wiki/Understanding-Scopes]
+     *  - [https://github.com/angular/angular.ui/wiki/Understanding-Scopes]
      *
      * For basic examples, how to use `ngModel`, see:
      *
@@ -27027,7 +27027,7 @@
      * </pre>
      *
      * @example
-     * <example deps="angular-animate.js" animations="true" fixBase="true">
+     * <example deps="angular-animate.ui" animations="true" fixBase="true">
      <file name="index.html">
      <script>
      function Ctrl($scope) {
@@ -27109,7 +27109,7 @@
      *       <tt>counter = {{counter}}</tt><br/>
      *     </div>
      *   </file>
-     *   <file name="protractor.js" type="protractor">
+     *   <file name="protractor.ui" type="protractor">
      *     var counter = element(by.binding('counter'));
      *     var debug = element(by.binding('confirmed'));
      *
@@ -27201,7 +27201,7 @@
      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
      </form>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var listInput = element(by.model('names'));
      var names = element(by.binding('{{names}}'));
      var valid = element(by.binding('myForm.namesInput.$valid'));
@@ -27302,7 +27302,7 @@
      <div>You chose {{my.favorite}}</div>
      </form>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var favorite = element(by.binding('my.favorite'));
 
      it('should initialize to model', function() {
@@ -27372,7 +27372,7 @@
      Hello <span ng-bind="name"></span>!
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-bind', function() {
          var nameInput = element(by.model('name'));
 
@@ -27427,7 +27427,7 @@
      <pre ng-bind-template="{{salutation}} {{name}}!"></pre>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-bind', function() {
          var salutationElem = element(by.binding('salutation'));
          var salutationInput = element(by.model('salutation'));
@@ -27479,14 +27479,14 @@
      * @example
      Try it here: enter text in text box and watch the greeting change.
 
-     <example module="ngBindHtmlExample" deps="angular-sanitize.js">
+     <example module="ngBindHtmlExample" deps="angular-sanitize.ui">
      <file name="index.html">
      <div ng-controller="ngBindHtmlCtrl">
      <p ng-bind-html="myHTML"></p>
      </div>
      </file>
 
-     <file name="script.js">
+     <file name="script.ui">
      angular.module('ngBindHtmlExample', ['ngSanitize'])
 
      .controller('ngBindHtmlCtrl', ['$scope', function ngBindHtmlCtrl($scope) {
@@ -27495,7 +27495,7 @@
        }]);
      </file>
 
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-bind-html', function() {
          expect(element(by.binding('myHTML')).getText()).toBe(
              'I am an HTMLstring with links! and other stuff');
@@ -27645,7 +27645,7 @@
            color: red;
        }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var ps = element.all(by.css('p'));
 
      it('should let you toggle the class', function() {
@@ -27681,7 +27681,7 @@
 
      The example below demonstrates how to perform animations using ngClass.
 
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      <input id="setbtn" type="button" value="set" ng-click="myVar='my-class'">
      <input id="clearbtn" type="button" value="clear" ng-click="myVar=''">
@@ -27699,7 +27699,7 @@
          font-size:3em;
        }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-class', function() {
          expect(element(by.css('.base-class')).getAttribute('class')).not.
            toMatch(/my-class/);
@@ -27763,7 +27763,7 @@
          color: blue;
        }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-class-odd and ng-class-even', function() {
          expect(element(by.repeater('name in names').row(0).column('name')).getAttribute('class')).
            toMatch(/odd/);
@@ -27811,7 +27811,7 @@
          color: blue;
        }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-class-odd and ng-class-even', function() {
          expect(element(by.repeater('name in names').row(0).column('name')).getAttribute('class')).
            toMatch(/odd/);
@@ -27837,8 +27837,8 @@
      * multiple `ngCloak` directives to small portions of the page to permit progressive rendering
      * of the browser view.
      *
-     * `ngCloak` works in cooperation with the following css rule embedded within `angular.js` and
-     * `angular.min.js`.
+     * `ngCloak` works in cooperation with the following css rule embedded within `angular.ui` and
+     * `angular.min.ui`.
      * For CSP mode please add `angular-csp.css` to your html file (see {@link ng.directive:ngCsp ngCsp}).
      *
      * ```css
@@ -27852,7 +27852,7 @@
      * during the compilation of the template it deletes the `ngCloak` element attribute, making
      * the compiled element visible.
      *
-     * For the best result, the `angular.js` script must be loaded in the head section of the html
+     * For the best result, the `angular.ui` script must be loaded in the head section of the html
      * document; alternatively, the css rule above must be included in the external stylesheet of the
      * application.
      *
@@ -27868,7 +27868,7 @@
      <div id="template1" ng-cloak>{{ 'hello' }}</div>
      <div id="template2" ng-cloak class="ng-cloak">{{ 'hello IE7' }}</div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should remove the template directive and css class', function() {
          expect($('#template1').getAttribute('ng-cloak')).
            toBeNull();
@@ -27968,7 +27968,7 @@
      </ul>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check controller as', function() {
          var container = element(by.id('ctrl-as-exmpl'));
 
@@ -28045,7 +28045,7 @@
      </ul>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check controller', function() {
          var container = element(by.id('ctrl-exmpl'));
 
@@ -28149,7 +28149,7 @@
      </button>
      count: {{count}}
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-click', function() {
          expect(element(by.binding('count')).getText()).toMatch('0');
          element(by.css('button')).click();
@@ -28455,7 +28455,7 @@
      <pre>list={{list}}</pre>
      </form>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-submit', function() {
          expect(element(by.binding('list')).getText()).toBe('list=[]');
          element(by.css('#submit')).click();
@@ -28586,7 +28586,7 @@
      * Note that when an element is removed using `ngIf` its scope is destroyed and a new scope
      * is created when the element is restored.  The scope created within `ngIf` inherits from
      * its parent scope using
-     * [prototypal inheritance](https://github.com/angular/angular.js/wiki/The-Nuances-of-Scope-Prototypal-Inheritance).
+     * [prototypal inheritance](https://github.com/angular/angular.ui/wiki/The-Nuances-of-Scope-Prototypal-Inheritance).
      * An important implication of this is if `ngModel` is used within `ngIf` to bind to
      * a javascript primitive defined in the parent scope. In this case any modifications made to the
      * variable within the child scope will override (hide) the value in the parent scope.
@@ -28611,7 +28611,7 @@
      *     element is added to the DOM tree.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /><br/>
      Show when checked:
@@ -28733,7 +28733,7 @@
      *                  - Otherwise enable scrolling only if the expression evaluates to truthy value.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      <div ng-controller="Ctrl">
      <select ng-model="template" ng-options="t.name for t in templates">
@@ -28746,7 +28746,7 @@
      </div>
      </div>
      </file>
-     <file name="script.js">
+     <file name="script.ui">
      function Ctrl($scope) {
         $scope.templates =
           [ { name: 'template1.html', url: 'template1.html'},
@@ -28800,7 +28800,7 @@
         top:50px;
       }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var templateSelect = element(by.model('template'));
      var includeElem = element(by.css('[ng-include]'));
 
@@ -28919,8 +28919,8 @@
                                     currentScope.$emit('$includeContentLoaded');
                                     scope.$eval(onloadExp);
                                 }).error(function () {
-                                        if (thisChangeId === changeCounter) cleanupLastIncludeContent();
-                                    });
+                                    if (thisChangeId === changeCounter) cleanupLastIncludeContent();
+                                });
                                 scope.$emit('$includeContentRequested');
                             } else {
                                 cleanupLastIncludeContent();
@@ -28994,7 +28994,7 @@
      </div>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should alias index positions', function() {
          var elements = element.all(by.css('.example-init'));
          expect(elements.get(0).getText()).toBe('list[ 0 ][ 0 ] = a;');
@@ -29040,7 +29040,7 @@
      <div>Normal: {{1 + 2}}</div>
      <div ng-non-bindable>Ignored: {{1 + 2}}</div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-non-bindable', function() {
          expect(element(by.binding('1 + 2')).getText()).toContain('3');
          expect(element.all(by.css('div')).last().getText()).toMatch(/1 \+ 2/);
@@ -29057,7 +29057,7 @@
      *
      * @description
      * `ngPluralize` is a directive that displays messages according to en-US localization rules.
-     * These rules are bundled with angular.js, but can be overridden
+     * These rules are bundled with angular.ui, but can be overridden
      * (see {@link guide/i18n Angular i18n} dev guide). You configure ngPluralize directive
      * by specifying the mappings between
      * [plural categories](http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
@@ -29172,7 +29172,7 @@
      </ng-pluralize>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should show correct pluralized string', function() {
           var withoutOffset = element.all(by.css('ng-pluralize')).get(0);
           var withOffset = element.all(by.css('ng-pluralize')).get(1);
@@ -29378,7 +29378,7 @@
      * @example
      * This example initializes the scope to a list of names and
      * then uses `ngRepeat` to display every person:
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      <div ng-init="friends = [
      {name:'John', age:25, gender:'boy'},
@@ -29437,7 +29437,7 @@
         max-height:40px;
       }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var friends = element.all(by.repeater('friend in friends'));
 
      it('should render initial data set', function() {
@@ -29748,7 +29748,7 @@
      *     then the element is shown or hidden respectively.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      Click me: <input type="checkbox" ng-model="checked"><br/>
      <div>
@@ -29795,7 +29795,7 @@
         background:white;
       }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var thumbsUp = element(by.css('span.glyphicon-thumbs-up'));
      var thumbsDown = element(by.css('span.glyphicon-thumbs-down'));
 
@@ -29908,7 +29908,7 @@
      *     the element is shown or hidden respectively.
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      Click me: <input type="checkbox" ng-model="checked"><br/>
      <div>
@@ -29955,7 +29955,7 @@
         background:white;
       }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var thumbsUp = element(by.css('span.glyphicon-thumbs-up'));
      var thumbsDown = element(by.css('span.glyphicon-thumbs-down'));
 
@@ -30006,7 +30006,7 @@
          color: black;
        }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var colorSpan = element(by.css('span'));
 
      it('should check ng-style', function() {
@@ -30083,7 +30083,7 @@
      *
      *
      * @example
-     <example module="ngAnimate" deps="angular-animate.js" animations="true">
+     <example module="ngAnimate" deps="angular-animate.ui" animations="true">
      <file name="index.html">
      <div ng-controller="Ctrl">
      <select ng-model="selection" ng-options="item for item in items">
@@ -30098,7 +30098,7 @@
      </div>
      </div>
      </file>
-     <file name="script.js">
+     <file name="script.ui">
      function Ctrl($scope) {
         $scope.items = ['settings', 'home', 'other'];
         $scope.selection = $scope.items[0];
@@ -30137,7 +30137,7 @@
         top:0;
       }
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      var switchElem = element(by.css('[ng-switch]'));
      var select = element(by.model('selection'));
 
@@ -30276,7 +30276,7 @@
      <pane title="{{title}}">{{text}}</pane>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should have transcluded', function() {
           var titleElement = element(by.model('title'));
           titleElement.clear();
@@ -30295,7 +30295,7 @@
         link: function ($scope, $element, $attrs, controller, $transclude) {
             if (!$transclude) {
                 throw minErr('ngTransclude')('orphan',
-                    'Illegal use of ngTransclude directive in the template! ' +
+                        'Illegal use of ngTransclude directive in the template! ' +
                         'No parent directive that requires a transclusion found. ' +
                         'Element: {0}',
                     startingTag($element));
@@ -30333,7 +30333,7 @@
      <a ng-click="currentTpl='/tpl.html'" id="tpl-link">Load inlined template</a>
      <div id="tpl-content" ng-include src="currentTpl"></div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should load template defined inside script tag', function() {
         element(by.css('#tpl-link')).click();
         expect(element(by.css('#tpl-content')).getText()).toMatch(/Content of the template/);
@@ -30477,7 +30477,7 @@
      </div>
      </div>
      </file>
-     <file name="protractor.js" type="protractor">
+     <file name="protractor.ui" type="protractor">
      it('should check ng-options', function() {
            expect(element(by.binding('{selected_color:color}')).getText()).toMatch('red');
            element.all(by.select('color')).first().click();
@@ -30662,7 +30662,7 @@
 
                     if (!(match = optionsExp.match(NG_OPTIONS_REGEXP))) {
                         throw ngOptionsMinErr('iexp',
-                            "Expected expression in form of " +
+                                "Expected expression in form of " +
                                 "'_select_ (as _label_)? for (_key_,)?_value_ in _collection_'" +
                                 " but got '{0}'. Element: {1}",
                             optionsExp, startingTag(selectElement));
@@ -31118,7 +31118,7 @@
         if (!/^http/.test(href) && !/^https/.test(href)) {
             body.append('<p id="system-error"></p>');
             body.find('#system-error').text(
-                'Scenario runner must be run using http or https. The protocol ' +
+                    'Scenario runner must be run using http or https. The protocol ' +
                     href.split(':')[0] + ':// is not supported.'
             );
             return;
@@ -31495,7 +31495,7 @@
     angular.scenario.Application = function (context) {
         this.context = context;
         context.append(
-            '<h2>Current URL: <a href="about:blank">None</a></h2>' +
+                '<h2>Current URL: <a href="about:blank">None</a></h2>' +
                 '<div id="test-frames"></div>'
         );
     };
@@ -32993,7 +32993,7 @@
             lastStepUiMap = {};
 
         context.append(
-            '<div id="header">' +
+                '<div id="header">' +
                 '  <h1><span class="angular">AngularJS</span>: Scenario Test Runner</h1>' +
                 '  <ul id="status-legend" class="status-display">' +
                 '    <li class="status-error">0 Errors</li>' +
@@ -33019,7 +33019,7 @@
             );
             ui = ui.find('> .tests li:last');
             ui.append(
-                '<div class="test-info">' +
+                    '<div class="test-info">' +
                     '  <p class="test-title">' +
                     '    <span class="timer-result"></span>' +
                     '    <span class="test-name"></span>' +
@@ -33073,7 +33073,7 @@
             ui.find('> .scrollpane .test-actions').append('<li class="status-pending"></li>');
             var stepUi = lastStepUiMap[spec.id] = ui.find('> .scrollpane .test-actions li:last');
             stepUi.append(
-                '<div class="timer-result"></div>' +
+                    '<div class="timer-result"></div>' +
                     '<div class="test-title"></div>'
             );
             stepUi.find('> .test-title').text(step.name);
@@ -33113,7 +33113,7 @@
                 var id = 'describe-' + defn.id;
                 if (!context.find('#' + id).length) {
                     currentContext.find('> .test-children').append(
-                        '<div class="test-describe" id="' + id + '">' +
+                            '<div class="test-describe" id="' + id + '">' +
                             '  <h2></h2>' +
                             '  <div class="test-children"></div>' +
                             '  <ul class="tests"></ul>' +

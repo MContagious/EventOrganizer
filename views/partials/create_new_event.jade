@@ -1,0 +1,33 @@
+//
+   Created by kishore.relangi on 3/22/14.
+
+div(ng-include="'/partials/menu'")
+
+div.container
+    div.container-fluid
+        div.row
+            form.form-horizontal(role="form", ng-submit="create_new_main_event(new_event)")
+                legend  Create A New Main Event
+                div.form-group
+                    label.col-md-7.text-danger {{error}}
+                div.form-group
+                    label.col-md-2.control-label(for="event name") Event Name
+                    div.col-md-5
+                        input.form-control(ng-model="new_event.name", placeholder="Event Name", type="text", required)
+                div.form-group
+                    label.col-md-2.control-label(for="event description") Description
+                    div.col-md-5
+                        textarea.form-control(ng-model="new_event.desc", placeholder="Event description", type="textarea", required)
+                div.form-group
+                    label.col-md-2.control-label(for="event date") Event Date
+                    div.col-md-5
+                        input.form-control(ng-model="new_event.date", placeholder="Event Date", datepicker="", required)
+                div.form-group
+                    div.col-md-offset-2.col-md-5
+                        button.btn.btn-default(type="submit") Save&nbsp;
+                            span.fa.fa-save
+                        &nbsp;
+                        button.btn.btn-default(ng-click="new_event={}") Clear&nbsp;
+                            span.fa.fa-refresh
+        div.row
+            pre {{new_event | json}}

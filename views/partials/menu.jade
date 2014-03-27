@@ -1,0 +1,30 @@
+//
+   Created by kishore.relangi on 3/22/14.
+
+header.navbar.navbar-default(role="navigation")
+    .container
+        //
+            Brand and toggle get grouped for better mobile display
+        .navbar-header
+            button.navbar-toggle(type="button", data-toggle="collapse", data-target=".menu-collapsed-items")
+                span.sr-only Toggle navigation
+                span.fa.fa-bars
+            a.navbar-brand(href="/") Event Organizer
+        a.navbar-right.btn.fa.fa-sign-out(href="/logout")
+        p.navbar-text.navbar-right.user-name
+            b.fa.fa-user &nbsp;
+            | Welcome! #{user.name}
+        nav.collapse.navbar-collapse.menu-collapsed-items
+            ul.nav.navbar-nav
+                li(ng-class="{'active' : active_menu_item=='home'}")
+                    a(href="#/home")
+                        i.fa.fa-home
+                        | &nbsp;Home
+                li(ng-class="{'active' : active_menu_item=='new'}")
+                    a(href="#/new")
+                        i.fa.fa-plus-circle
+                        | &nbsp;New Event
+                li(ng-class="{'active' : active_menu_item=='manageevent'}")
+                    a(href="#/home")
+                        i.fa.fa-cogs
+                        | &nbsp;Manage Events

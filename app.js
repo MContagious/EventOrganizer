@@ -21,6 +21,9 @@ var conf = {
 };
 
 var routes = require('./routes');
+var main_event = require('./routes/main_event').main_event;
+var sub_event = require('./routes/sub_event');
+var main_event_get = require('./routes/main_event').get;
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
@@ -50,6 +53,12 @@ app.use(stylus.middleware({
     compile: compile
 }));
 
+
+app.use(function (req, res, next) {
+    res.header("X-powered-by", "Express app by Kishore Relangi");
+    next();
+});
+
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -76,6 +85,21 @@ app.post('/login', user.handle_login(db));
 app.get('/signup', user.signup);
 app.post('/signup', user.handle_signup(db));
 app.get('/partials/:partial_page', routes.render_partial);
+
+app.get('/main_event/get/:offset/:limit', main_event_get(db));
+app.post('/main_event/:action', main_event(db));
+
+app.post('/mainevent/:main_event_id/form_element/new', sub_event.create_new_form_element(db));
+app.get('/mainevent/:main_event_id/form_element/get', sub_event.get_form_elements(db));
+app.post('/mainevent/:main_event_id/form/new', sub_event.create_new_form(db));
+app.get('/mainevent/:main_event_id/form/get', sub_event.get_forms(db));
+app.get('/mainevent/:main_event_id/form', sub_event.get_forms(db));
+app.get('/mainevent/:main_event_id/form_element', sub_event.get_form_elements(db));
+app.post('/mainevent/:main_event_id/subevents/new', sub_event.create_new_sub_event(db));
+app.get('/mainevent/:main_event_id/subevents/get', sub_event.get_sub_event(db));
+app.get('/mainevent/:main_event_id/subevents', sub_event.get_sub_event(db));
+
+app.get('/mainevent/:main_event_id/subevents', sub_event.getlist(db));
 
 mongoose.connect('mongodb://localhost');
 

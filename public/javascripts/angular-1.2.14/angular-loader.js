@@ -128,7 +128,7 @@
              * A module is a collection of services, directives, filters, and configuration information.
              * `angular.module` is used to configure the {@link auto.$injector $injector}.
              *
-             * ```js
+             * ```ui
              * // Create a new module
              * var myModule = angular.module('myModule', []);
              *
@@ -144,7 +144,7 @@
              *
              * Then you can create an injector and load your modules like this:
              *
-             * ```js
+             * ```ui
              * var injector = angular.injector(['ng', 'MyModule'])
              * ```
              *
@@ -286,7 +286,7 @@
                          * Defines an animation hook that can be later used with
                          * {@link ngAnimate.$animate $animate} service and directives that use this service.
                          *
-                         * ```js
+                         * ```ui
                          * module.animation('.animation-name', function($inject1, $inject2) {
            *   return {
            *     eventName : function(element, done) {

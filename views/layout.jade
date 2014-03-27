@@ -1,15 +1,21 @@
 doctype html
 html(ng-app="EventOrganizer")
-    head
-        title= title
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        link(rel='stylesheet', href='/css/font-awesome-4.0.3/css/font-awesome.css')
-        script(src='/javascripts/jquery-1.11.0/jquery-1.11.0.min.js')
-        script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
-        script(type="text/javascript", src="/javascripts/angular-1.2.14/angular.min.js")
-        script(type="text/javascript", src="/javascripts/angular-1.2.14/angular-route.min.js")
-        script(type="text/javascript", src="/javascripts/event_organizer.js")
-        script(type="text/javascript", src="/javascripts/controllers.js")
 
     body
         block content
+head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/font-awesome-4.0.3/css/font-awesome.css')
+    link(rel="stylesheet", href='/javascripts/jquery-1.11.0/css/smoothness/jquery-ui-1.10.4.custom.min.css')
+    script(src="/javascripts/jquery-1.11.0/jquery-1.11.0.min.js")
+    script(src="/javascripts/jquery-1.11.0/ui/jquery-ui-1.10.4.custom.min.js")
+    script(src="/javascripts/holder/holder.js")
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
+    //script(type="text/javascript", src="/javascripts/angular-1.2.14/angular.min.js")
+    //script(type="text/javascript", src="/javascripts/angular-1.2.14/angular-route.min.js")
+    script(type="text/javascript", src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js")
+    script(type="text/javascript", src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js")
+    script(type="text/javascript", src="/javascripts/event_organizer.js")
+    script(type="text/javascript", src="/javascripts/controllers.js")
+    script(type="text/javascript", src="/javascripts/directives.js")

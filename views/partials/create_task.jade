@@ -1,0 +1,54 @@
+//
+   Created by kishore.relangi on 3/26/14.
+
+div.panel.panel-info(ng-show="create_sub_event == 1")
+    div.panel-heading
+        div.panel-title Create A New Task
+            b.pull-right.fa(ng-class="{'fa-spinner fa-spin' : creating_sub_event == 1}")
+    div.panel-body
+        div.alert.alert-dismissable.alert-info(ng-show="creating_sub_event_message")
+            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+            | {{creating_sub_event_message}}
+        div.alert.alert-dismissable.alert-danger(ng-show="creating_sub_event_err_message")
+            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+            | {{creating_sub_event_err_message}}
+    form.form-horizontal(role="form", ng-submit="new_sub_event()")
+        div.form-group(ng-class="{'has-success': nse.name != undefined}")
+            label.col-md-4.control-label(for="name") Task Name
+            div.col-md-5
+                input.form-control(ng-model="nse.name", placeholder="Name of the task", type="text", required)
+        div.form-group(ng-class="{'has-success': nse.type != undefined}")
+            label.col-md-4.control-label(for="type") Task Type
+            div.col-md-5
+                select.form-control(ng-model="nse.type", ng-options="type for type in ['Game', 'Other']")
+                    option(value='') --- Type --
+        div.form-group(ng-class="{'has-success': nse.sub_type != undefined}")
+            label.col-md-4.control-label(for="subscription type") Participants subscription Type
+            div.col-md-5
+                select.form-control(ng-model="nse.sub_type", ng-options="type for type in ['Public', 'Invited', 'Manual']")
+                    option(value='') --- Subscription Type --
+        div.form-group(ng-class="{'has-success': nse.min_participants_count != undefined}")
+            label.col-md-4.control-label(for="Minimum") Minimum Participants required
+            div.col-md-5
+                input.form-control(ng-model="nse.min_participants_count", placeholder="Min", type="number", min="1", required)
+        div.form-group(ng-class="{'has-success': nse.max_participants_count != undefined}")
+            label.col-md-4.control-label(for="Maximum") Maximum Participants required
+            div.col-md-5
+                input.form-control(ng-model="nse.max_participants_count", placeholder="Max", type="number", min="1", required)
+        div.form-group(ng-class="{'has-success': nse.task_description != undefined}")
+            label.col-md-4.control-label(for="task description") Task Help/Description
+            div.col-md-5
+                textarea.form-control(ng-model="nse.task_description", placeholder="Help/Description", type="text", required)
+        div.form-group
+            div.col-md-4
+            div.col-md-5
+                div.btn-group
+                    div.btn-group
+                        button.btn.btn-info(type="submit") Create&nbsp;
+                            b.fa.fa-plus-circle
+                    div.btn-group
+                        button.btn.btn-warning(type="reset") Reset&nbsp;
+                            b.fa.fa-refresh
+                    div.btn-group
+                        a.btn.btn-danger(ng-click="show_create_sub_event(2);") Cancel&nbsp;
+                            b.fa.fa-times-circle

@@ -1,0 +1,71 @@
+//
+   Created by kishore.relangi on 3/26/14.
+
+div.panel.panel-warning(ng-show="create_form_elements == 1")
+    div.panel-heading
+        div.panel-title Create Form Element
+            b.pull-right.fa(ng-class="{'fa-spinner fa-spin' : creating_form_elements == 1}")
+    div.panel-body
+        div.alert.alert-dismissable.alert-info(ng-show="creating_form_elements_message")
+            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+            | {{creating_form_elements_message}}
+        div.alert.alert-dismissable.alert-danger(ng-show="creating_form_elements_err_message")
+            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+            | {{creating_form_elements_err_message}}
+    form.form-horizontal(role="form", ng-submit="new_form_element()")
+        div.form-group(ng-class="{'has-success': nfe.name != undefined}")
+            label.col-md-4.control-label(for="form element name") Form Element Name
+            div.col-md-5
+                input.form-control(ng-model="nfe.name", placeholder="Name of the form element", type="text", required)
+        div.form-group(ng-class="{'has-success': nfe.label != undefined}")
+            label.col-md-4.control-label(for="form element label") Label
+            div.col-md-5
+                input.form-control(ng-model="nfe.label", placeholder="Label", type="text", required)
+        div.form-group(ng-class="{'has-success': nfe.type != undefined}")
+            label.col-md-4.control-label(for="form element label") Element Type
+            div.col-md-5
+                select.form-control(ng-model="nfe.type", ng-options="opt for opt in element_types.sort()", required)
+                    option(value="") -- Element Type --
+        div.form-group(ng-show="element_types_select.indexOf(nfe.type) != -1")
+            label.col-md-4.control-label(for="Select options") Options
+            div.col-md-5
+                a.btn.btn-warning(ng-click="add_new_options(nfe)")
+                    span.fa.fa-plus-square-o
+        div.form-group(ng-repeat="opt in nfe.options")
+            label.col-md-4
+            div.col-md-2
+                input.form-control(ng-model="opt.value", placeholder="Value{{$index+1}}", type="text", required)
+            div.col-md-2
+                input.form-control(ng-model="opt.option", placeholder="Option{{$index+1}}", type="text", required)
+            div.col-md-1
+                a.btn.btn-warning(ng-click="remove_new_options(nfe, $index)")
+                    span.fa.fa-minus-square-o
+        div.form-group(ng-class="{'has-success': nfe.default_val != undefined}")
+            label.col-md-4.control-label(for="form element default val") Default Value
+            div.col-md-5
+                input.form-control(ng-model="nfe.default_val", placeholder="Default Value", type="text")
+        div.form-group(ng-class="{'has-success': nfe.scope != undefined}")
+            label.col-md-4.control-label(for="element scope") Element Scope
+            div.col-md-5
+                select.form-control(ng-model="nfe.scope", ng-options="opt for opt in ['Global', 'Main Event']", required)
+                    option(value="") -- Element Scope --
+        div.form-group
+            label.col-md-4.control-label(for="Other Options")
+            div.col-md-5
+                .checkbox
+                    label
+                        input(type="checkbox", ng-bind="nfe.required")
+                        | Required
+        div.form-group
+            div.col-md-4
+            div.col-md-5
+                div.btn-group
+                    div.btn-group
+                        button.btn.btn-info(type="submit") Create&nbsp;
+                            b.fa.fa-plus-circle
+                    div.btn-group
+                        button.btn.btn-warning(type="reset") Reset&nbsp;
+                            b.fa.fa-refresh
+                    div.btn-group
+                        a.btn.btn-danger(ng-click="show_create_form_elements(2);") Cancel&nbsp;
+                            b.fa.fa-times-circle

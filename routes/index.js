@@ -8,7 +8,7 @@ exports.index = function (req, res) {
 
 exports.render_partial = function (req, res) {
     var partials_html_name = req.params.partial_page;
-    res.render('partials/' + partials_html_name, {});
+    res.render('partials/' + partials_html_name, {user: req.session.user});
 };
 
 exports.restrict = function (req, res, next) {

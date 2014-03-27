@@ -150,7 +150,7 @@
      *
      * @returns {Object} A resource "class" object with methods for the default set of resource actions
      *   optionally extended with custom `actions`. The default set contains these actions:
-     *   ```js
+     *   ```ui
      *   { 'get':    {method:'GET'},
  *     'save':   {method:'POST'},
  *     'query':  {method:'GET', isArray:true},
@@ -163,7 +163,7 @@
      *   instance of the resource class. The actions `save`, `remove` and `delete` are available on it
      *   as  methods with the `$` prefix. This allows you to easily perform CRUD operations (create,
      *   read, update, delete) on server-side data like this:
-     *   ```js
+     *   ```ui
      *   var User = $resource('/user/:userId', {userId:'@id'});
      *   var user = User.get({userId:123}, function() {
  *     user.abc = true;
@@ -213,7 +213,7 @@
      *
      * # Credit card resource
      *
-     * ```js
+     * ```ui
      // Define CreditCard class
      var CreditCard = $resource('/user/:userId/card/:cardId',
      {userId:123, cardId:'@id'}, {
@@ -257,7 +257,7 @@
      * all of the non-GET methods are available with `$` prefix. This allows you to easily support CRUD
      * operations (create, read, update, delete) on server-side data.
 
-     ```js
+     ```ui
      var User = $resource('/user/:userId', {userId:'@id'});
      var user = User.get({userId:123}, function() {
        user.abc = true;
@@ -269,7 +269,7 @@
      * in the response that came from the server as well as $http header getter function, so one
      * could rewrite the above example and get access to http headers as:
      *
-     ```js
+     ```ui
      var User = $resource('/user/:userId', {userId:'@id'});
      User.get({userId:123}, function(u, getResponseHeaders){
        u.abc = true;
@@ -282,7 +282,7 @@
 
      * # Creating a custom 'PUT' request
      * In this example we create a custom method on our resource to make a PUT request
-     * ```js
+     * ```ui
      *        var app = angular.module('app', ['ngResource', 'ngRoute']);
      *
      *        // Some APIs expect a PUT request in the format URL/object/ID
@@ -528,7 +528,7 @@
                                 // jshint -W018
                                 if (angular.isArray(data) !== (!!action.isArray)) {
                                     throw $resourceMinErr('badcfg', 'Error in resource configuration. Expected ' +
-                                        'response to contain an {0} but got an {1}',
+                                            'response to contain an {0} but got an {1}',
                                         action.isArray ? 'array' : 'object', angular.isArray(data) ? 'array' : 'object');
                                 }
                                 // jshint +W018

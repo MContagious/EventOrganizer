@@ -4,25 +4,25 @@
 extends layout
 block content
     div.container-fluid(style="margin:10%;")
-        .row.col-lg-push-2.col-lg-10
+        .row.col-md-push-2.col-md-10
             form.form-horizontal(role="form", method="post", action="/login")
                 legend Login
                 div.form-group
-                    label.col-lg-7.text-danger #{error_message || ''}
+                    label.col-md-7.text-danger #{error_message || ''}
                 div.form-group
-                    label.col-lg-7.text-danger {{error}}
+                    label.col-md-7.text-danger {{error}}
                 div.form-group
-                    label.col-lg-7.text-success #{message || ''}
+                    label.col-md-7.text-success #{message || ''}
                 div.form-group
-                    label.col-lg-2.control-label(for="username") User Name
-                    div.col-lg-5
+                    label.col-md-2.control-label(for="username") User Name
+                    div.col-md-5
                         input.form-control(name="username", placeholder="User Name", type="text", required)
                 div.form-group
-                    label.col-lg-2.control-label(for="password") Password
-                    div.col-lg-5
+                    label.col-md-2.control-label(for="password") Password
+                    div.col-md-5
                         input.form-control(name="password", placeholder="password", type="password", required)
                 div.form-group
-                    div.col-lg-offset-2.col-lg-5
+                    div.col-md-offset-2.col-md-5
                         button.btn.btn-default(type="submit") Sign In&nbsp;
                             span.fa.fa-sign-in
                         &nbsp;

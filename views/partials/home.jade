@@ -1,3 +1,10 @@
 //
    Created by kishore.relangi on 3/21/14.
 
+div(ng-include="'/partials/menu'")
+
+div.container
+    div.container-fluid
+        div.row
+            div.col-md-8
+                div(ng-include="'/partials/display_main_event'", ng-repeat="main_event in main_events_list")

@@ -1,0 +1,43 @@
+//
+   Created by kishore.relangi on 3/26/14.
+
+div.panel.panel-primary(ng-show="create_form == 1")
+    div.panel-heading
+        div.panel-title Create A Form/Screen for a task
+            b.pull-right.fa(ng-class="{'fa-spinner fa-spin' : creating_form == 1}")
+    div.panel-body
+        div.alert.alert-dismissable.alert-info(ng-show="creating_form_message")
+            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+            | {{creating_form_message}}
+        div.alert.alert-dismissable.alert-danger(ng-show="creating_form_err_message")
+            button(type="button",class="close",data-dismiss="alert",aria-hidden="true") &times;
+            | {{creating_form_err_message}}
+    form.form-horizontal(role="form", ng-submit="new_form()")
+        div.form-group(ng-class="{'has-success': nf.name != undefined}")
+            label.col-md-4.control-label(for="name") Form Name
+            div.col-md-6
+                input.form-control(ng-model="nf.name", placeholder="Name of the form", type="text", required)
+        div.form-group(ng-class="{'has-success': nf.name != undefined}")
+            label.col-md-4.control-label(for="name") Form Elements
+            div.col-md-6
+                a.btn.btn-primary(ng-click="nf.form_elements.push(null)")
+                    span.fa.fa-plus-square-o
+        div.form-group(ng-repeat="ele in nf.form_elements track by $index", ng-class="{'has-success': nf.form_elements[$index] != null}")
+            label.col-md-4.control-label(for="name")
+            label.col-md-2.control-label(for="for element {{$index+1}}") Element# {{$index+1}}
+            div.col-md-3
+                select.form-control(ng-model="nf.form_elements[$index]", ng-options="e for e in form_element_names_list")
+                    option(value='') -- Select from available elements --
+        div.form-group
+            div.col-md-4
+            div.col-md-5
+                div.btn-group
+                    div.btn-group
+                        button.btn.btn-info(type="submit") Create&nbsp;
+                            b.fa.fa-plus-circle
+                    div.btn-group
+                        button.btn.btn-warning(type="reset") Reset&nbsp;
+                            b.fa.fa-refresh
+                    div.btn-group
+                        a.btn.btn-danger(ng-click="show_create_form(2);") Cancel&nbsp;
+                            b.fa.fa-times-circle
